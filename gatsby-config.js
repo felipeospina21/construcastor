@@ -16,6 +16,20 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyALFdXGKJ_ZAEgWOkvEj-M_x4ur-jmuLoM",
+          authDomain: "buho-app-27082.firebaseapp.com",
+          projectId: "buho-app-27082",
+          storageBucket: "buho-app-27082.appspot.com",
+          messagingSenderId: "384099593732",
+          appId: "1:384099593732:web:19453f5842cf8126d44f51",
+          measurementId: "G-5WBN5QM2YL"
+        }
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
