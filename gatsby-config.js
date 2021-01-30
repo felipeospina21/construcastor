@@ -5,6 +5,7 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
+    `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -25,9 +26,9 @@ module.exports = {
           storageBucket: "buho-app-27082.appspot.com",
           messagingSenderId: "384099593732",
           appId: "1:384099593732:web:19453f5842cf8126d44f51",
-          measurementId: "G-5WBN5QM2YL"
-        }
-      }
+          measurementId: "G-5WBN5QM2YL",
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
