@@ -3,20 +3,20 @@ import DatePicker from "react-datepicker"
 import firebase from "gatsby-plugin-firebase"
 
 import Layout from "../components/layout"
-import Reservation from "../components/Reservation"
+import Kiosks from "../components/Kiosks"
 import SEO from "../components/seo"
 
 import "react-datepicker/dist/react-datepicker.css"
 
 const IndexPage = () => {
-  const [startDate, setStartDate] = useState(null)
+  const [bookingDate, setBookingDate] = useState(new Date())
   const [bookingTime, setBookingTime] = useState()
-  const [availableTimes, setAvailableTimes] = useState([])
+  const [bookings, setBookings] = useState([])
   const schedules = ["10am-12pm", "12pm-2pm", "2pm-4pm", "4pm-6pm"]
 
   useEffect(()=>{
     getAvailableTimes()
-  },[])
+  },[bookingDate])
 
   const getAvailableTimes = async () => {
     firebase
@@ -27,23 +27,27 @@ const IndexPage = () => {
       querySnapshot.forEach(doc => {
         docs.push({ ...doc.data(), id: doc.id })
       })
-      
-      docs.forEach(doc=>{console.log(new Date(doc.bookinkInfo.bookingDate))})
 
-      const filteredDocs= docs.filter(doc=>doc.date === startDate)
-      setAvailableTimes(filteredDocs)
-   
+      const filteredDocs= docs.filter(doc=>(doc.bookingInfo.bookingDate.seconds * 1000) === bookingDate.getTime())
+      setBookings(filteredDocs)
 
     })
+  }
+
+  const setSelectedDate = (date)=>{
+    date.setHours(0,0,0)
+    setBookingDate(date)
   }
 
   return (
     <Layout>
       <SEO title="Home" />
       <h1>Hi people</h1>
+      <h4>Seleccione fecha de reserva</h4>
       <DatePicker
-        selected={startDate}
-        onChange={date => setStartDate(date)}
+        dateFormat="dd/MM/yyyy"
+        selected={bookingDate}
+        onChange={date => setSelectedDate(date)}
         minDate={new Date()}
         showDisabledMonthNavigation
       />
@@ -54,7 +58,7 @@ const IndexPage = () => {
         ))}
       </div>
 
-      <Reservation dateSelected={startDate} timeSelected={bookingTime}/>
+      <Kiosks dateSelected={bookingDate} timeSelected={bookingTime} bookings={bookings}/>
     </Layout>
   )
 }
