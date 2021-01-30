@@ -1,64 +1,91 @@
 import React, { useEffect, useState } from "react"
-import DatePicker from "react-datepicker"
 import firebase from "gatsby-plugin-firebase"
-
-import Layout from "../components/layout"
-import Kiosks from "../components/Kiosks"
 import SEO from "../components/seo"
-
-import "react-datepicker/dist/react-datepicker.css"
+import Layout from "../components/layout"
+import KiosksContainer from "../components/KiosksContainer"
+import Schedules from "../components/Schedules"
+import DatePickerContainer from "../components/DatePickerContainer"
+import { Button, Center, Heading } from "@chakra-ui/react"
 
 const IndexPage = () => {
   const [bookingDate, setBookingDate] = useState(new Date())
   const [bookingTime, setBookingTime] = useState()
   const [bookings, setBookings] = useState([])
-  const schedules = ["10am-12pm", "12pm-2pm", "2pm-4pm", "4pm-6pm"]
+  const [bookingKiosk, setBookingKiosk] = useState()
 
-  useEffect(()=>{
-    getAvailableTimes()
-  },[bookingDate])
+  useEffect(() => {
+    getBookings()
+  }, [bookingDate])
 
-  const getAvailableTimes = async () => {
+  const getBookings = async () => {
     firebase
-    .firestore()
-    .collection("bookings")
-    .onSnapshot(querySnapshot => {
-      const docs = []
-      querySnapshot.forEach(doc => {
-        docs.push({ ...doc.data(), id: doc.id })
+      .firestore()
+      .collection("bookings")
+      .onSnapshot(querySnapshot => {
+        const docs = []
+        querySnapshot.forEach(doc => {
+          docs.push({ ...doc.data(), id: doc.id })
+        })
+
+        const filteredDocs = docs.filter(
+          doc =>
+            doc.bookingInfo.bookingDate.seconds * 1000 === bookingDate.getTime()
+        )
+        setBookings(filteredDocs)
       })
-
-      const filteredDocs= docs.filter(doc=>(doc.bookingInfo.bookingDate.seconds * 1000) === bookingDate.getTime())
-      setBookings(filteredDocs)
-
-    })
   }
+  const setBooking = async () => {
+    const times = []
+    bookings.forEach(time => {
+      times.push(
+        `${time.bookingInfo.bookingTime}${time.bookingInfo.bookingKiosk}`
+      )
+    })
 
-  const setSelectedDate = (date)=>{
-    date.setHours(0,0,0)
-    setBookingDate(date)
+    if (!times.includes(`${bookingTime}${bookingKiosk}`)) {
+      firebase
+        .firestore()
+        .collection("bookings")
+        .doc()
+        .set({
+          bookingInfo: {
+            bookingDate,
+            bookingTime,
+            bookingKiosk,
+          },
+        })
+        .then(function () {
+          console.log("Document successfully written!")
+        })
+        .catch(function (error) {
+          console.error("Error writing document: ", error)
+        })
+    } else {
+      console.log("El horario escogido ya se encuentra reservado")
+    }
   }
 
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <h4>Seleccione fecha de reserva</h4>
-      <DatePicker
-        dateFormat="dd/MM/yyyy"
-        selected={bookingDate}
-        onChange={date => setSelectedDate(date)}
-        minDate={new Date()}
-        showDisabledMonthNavigation
+      <Heading as="h1" size="2xl" my={3}>Reservas</Heading>
+
+      <DatePickerContainer
+        bookingDate={bookingDate}
+        setBookingDate={setBookingDate}
       />
 
-      <div>
-        {schedules.map(schedule => (
-          <button key={schedule} onClick={()=>setBookingTime(schedule)}>{schedule}</button>
-        ))}
-      </div>
+      <Schedules setBookingTime={setBookingTime} />
 
-      <Kiosks dateSelected={bookingDate} timeSelected={bookingTime} bookings={bookings}/>
+      <KiosksContainer
+        setBookingKiosk={setBookingKiosk}
+        timeSelected={bookingTime}
+        bookings={bookings}
+      />
+
+      <Center my={10}>
+        <Button onClick={() => setBooking()}>Confirmar Reserva</Button>
+      </Center>
     </Layout>
   )
 }
