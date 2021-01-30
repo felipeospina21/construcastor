@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import firebase from "gatsby-plugin-firebase"
 import Kiosk from "./Kiosk"
-import { Wrap } from "@chakra-ui/react"
+import { Wrap, Center, Heading } from "@chakra-ui/react"
 
 const KiosksContainer = ({ setBookingKiosk, timeSelected, bookings }) => {
   const [kiosks, setKiosks] = useState([])
@@ -40,15 +40,21 @@ const KiosksContainer = ({ setBookingKiosk, timeSelected, bookings }) => {
 
   return (
     <Wrap>
-      {renderKiosks.map(kiosk => {
-        return (
-          <Kiosk
-            key={kiosk.id}
-            kiosk={kiosk}
-            setBookingKiosk={setBookingKiosk}
-          />
-        )
-      })}
+      {renderKiosks.length < 1 ? (
+        <Center>
+          <Heading as="h1">No hay kioskos disponibles en este horario</Heading>
+        </Center>
+      ) : (
+        renderKiosks.map(kiosk => {
+          return (
+            <Kiosk
+              key={kiosk.id}
+              kiosk={kiosk}
+              setBookingKiosk={setBookingKiosk}
+            />
+          )
+        })
+      )}
     </Wrap>
   )
 }

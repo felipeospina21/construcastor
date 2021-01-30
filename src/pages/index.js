@@ -6,6 +6,7 @@ import KiosksContainer from "../components/KiosksContainer"
 import Schedules from "../components/Schedules"
 import DatePickerContainer from "../components/DatePickerContainer"
 import { Button, Center, Heading } from "@chakra-ui/react"
+import BookingConfirmation from "../components/BookingConfirmation"
 
 const IndexPage = () => {
   const [bookingDate, setBookingDate] = useState(new Date())
@@ -68,7 +69,9 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Heading as="h1" size="2xl" my={3}>Reservas</Heading>
+      <Heading as="h1" size="2xl" my={3}>
+        Reservas
+      </Heading>
 
       <DatePickerContainer
         bookingDate={bookingDate}
@@ -83,9 +86,12 @@ const IndexPage = () => {
         bookings={bookings}
       />
 
-      <Center my={10}>
-        <Button onClick={() => setBooking()}>Confirmar Reserva</Button>
-      </Center>
+      <BookingConfirmation
+        bookingDate={bookingDate}
+        bookingTime={bookingTime}
+        bookingKiosk={bookingKiosk}
+        setBooking={setBooking}
+      />
     </Layout>
   )
 }
