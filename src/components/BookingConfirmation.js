@@ -1,4 +1,6 @@
 import React from "react"
+import firebase from "gatsby-plugin-firebase"
+import { Formik, Field, Form } from "formik"
 import {
   Container,
   Heading,
@@ -15,12 +17,13 @@ const BookingConfirmation = ({
   bookingDate,
   bookingTime,
   bookingKiosk,
-  setBooking,
+  bookings,
 }) => {
   const bookingYear = bookingDate.getFullYear()
   const bookingMonth = bookingDate.getMonth() + 1
   const bookingDay = bookingDate.getDate()
   const stringDate = `${bookingDay}/${bookingMonth}/${bookingYear}`
+
   return (
     <Container>
       <Heading as="h4">Fecha de reserva</Heading>
@@ -30,24 +33,103 @@ const BookingConfirmation = ({
       <Heading as="h4">Kiosko seleccionado</Heading>
       <p> Kiosko # {bookingKiosk}</p>
 
-      <FormControl id="first-name" isRequired>
-        <FormLabel>Nombre</FormLabel>
-        <Input placeholder="Ingrese su nombre" />
-      </FormControl>
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          phoneNumber: "",
+        }}
+        onSubmit={async (values,actions) => {
+          await new Promise(r => {
+            const times = []
+            const {firstName, lastName, phoneNumber} = values
+            bookings.forEach(time => {
+              times.push(
+                `${time.bookingInfo.bookingTime}${time.bookingInfo.bookingKiosk}`
+              )
+            })
 
-      <FormControl id="last-name" isRequired>
-        <FormLabel>Apellidos</FormLabel>
-        <Input placeholder="Ingrese sus apellidos" />
-      </FormControl>
+            if (!times.includes(`${bookingTime}${bookingKiosk}`)) {
+              firebase
+                .firestore()
+                .collection("bookings")
+                .doc()
+                .set({
+                  bookingInfo: {
+                    bookingDate,
+                    bookingTime,
+                    bookingKiosk,
+                    firstName,
+                    lastName,
+                    phoneNumber
+                  },
+                })
+                .then(function () {
+                  console.log("Document successfully written!")
+                  actions.setSubmitting(false)
+                })
+                .catch(function (error) {
+                  console.error("Error writing document: ", error)
+                })
+            } else {
+              console.log("El horario escogido ya se encuentra reservado")
+            }
+            
+          })
+        }}
+      >
 
-      <FormControl id="phone-number" isRequired>
-        <FormLabel>Celular</FormLabel>
-        <Input placeholder="Ingrese su celular" />
-      </FormControl>
+      {props=>(
+        <Form>
+          <Field name="firstName">
+            {({ field, form }) => (
+              <FormControl isRequired>
+                <FormLabel htmlFor="first-name">Nombre</FormLabel>
+                <Input
+                  {...field}
+                  id="first-name"
+                  pattern="[a-zA-Z ]*$"
+                  placeholder="Ingrese su nombre"
+                />
+                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
 
-      <Center my={10}>
-        <Button onClick={() => setBooking()}>Confirmar Reserva</Button>
-      </Center>
+          <Field name="lastName">
+            {({ field, form }) => (
+              <FormControl isRequired>
+                <FormLabel htmlFor="last-name">Apellidos</FormLabel>
+                <Input
+                  {...field}
+                  id="last-name"
+                  pattern="[a-zA-Z ]*$"
+                  placeholder="Ingrese sus apellidos"
+                />
+                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+
+          <Field name="phoneNumber" type="tel">
+            {({ field, form }) => (
+              <FormControl isRequired>
+                <FormLabel htmlFor="phone">Celular</FormLabel>
+                <FormHelperText>* Sin indicativo país, ni caracteres especiales</FormHelperText>
+                <Input {...field} id="phone" type="tel" pattern="[0-9]{10}" placeholder="Ingrese su celular" />
+                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+
+          <Center my={10}>
+            <Button type="submit" loadingText="Enviando" isLoading={props.isSubmitting}>Confirmar Reserva</Button>
+          </Center>
+        </Form>
+      )}
+       
+      </Formik>
+
     </Container>
   )
 }

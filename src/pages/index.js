@@ -35,36 +35,7 @@ const IndexPage = () => {
         setBookings(filteredDocs)
       })
   }
-  const setBooking = async () => {
-    const times = []
-    bookings.forEach(time => {
-      times.push(
-        `${time.bookingInfo.bookingTime}${time.bookingInfo.bookingKiosk}`
-      )
-    })
 
-    if (!times.includes(`${bookingTime}${bookingKiosk}`)) {
-      firebase
-        .firestore()
-        .collection("bookings")
-        .doc()
-        .set({
-          bookingInfo: {
-            bookingDate,
-            bookingTime,
-            bookingKiosk,
-          },
-        })
-        .then(function () {
-          console.log("Document successfully written!")
-        })
-        .catch(function (error) {
-          console.error("Error writing document: ", error)
-        })
-    } else {
-      console.log("El horario escogido ya se encuentra reservado")
-    }
-  }
 
   return (
     <Layout>
@@ -90,7 +61,8 @@ const IndexPage = () => {
         bookingDate={bookingDate}
         bookingTime={bookingTime}
         bookingKiosk={bookingKiosk}
-        setBooking={setBooking}
+        bookings={bookings}
+        // setBooking={setBooking}
       />
     </Layout>
   )
