@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import firebase from "gatsby-plugin-firebase"
 import SEO from "../components/seo"
-import Layout from "../components/layout"
 import KiosksContainer from "../components/KiosksContainer"
 import Schedules from "../components/Schedules"
 import DatePickerContainer from "../components/DatePickerContainer"
@@ -36,9 +35,8 @@ const IndexPage = () => {
       })
   }
 
-
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
       <Heading as="h1" size="2xl" my={3}>
         Reservas
@@ -51,7 +49,7 @@ const IndexPage = () => {
 
       <Schedules setBookingTime={setBookingTime} />
 
-      <KiosksContainer
+      {/* <KiosksContainer
         setBookingKiosk={setBookingKiosk}
         timeSelected={bookingTime}
         bookings={bookings}
@@ -63,8 +61,8 @@ const IndexPage = () => {
         bookingKiosk={bookingKiosk}
         bookings={bookings}
         // setBooking={setBooking}
-      />
-    </Layout>
+      /> */}
+    </>
   )
 }
 

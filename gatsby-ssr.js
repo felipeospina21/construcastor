@@ -1,7 +1,15 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/ssr-apis/
- */
 
-// You can delete this file if you're not using it
+import React from "react"
+import { extendTheme, ChakraProvider } from "@chakra-ui/react"
+import { brandTheme } from "./src/styles/theme"
+import "firebase/firestore"
+import "firebase/auth"
+
+export const wrapPageElement = ({ element }) => {
+  const theme = extendTheme(brandTheme)
+  return (
+    <ChakraProvider resetCSS theme={theme}>
+      {element}
+    </ChakraProvider>
+  )
+}
