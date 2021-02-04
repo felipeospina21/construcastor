@@ -4,7 +4,14 @@ import { Box, Flex } from "@chakra-ui/react"
 import HeaderLogo from "./HeaderLogo"
 
 const Header = () => (
-  <Box as="header" background="brand.green" h="4.5rem">
+  <Box
+    as="header"
+    background="brand.green"
+    h="4.5rem"
+    position="sticky"
+    top="0"
+    zIndex="100"
+  >
     <Flex as="div" m="0 auto" h="100%" maxW="1800px">
       <HeaderLogo />
       <NavLinks />

@@ -7,6 +7,7 @@ const NavLinks = () => {
     <HStack w="80%" spacing="5rem" justifyContent="center">
       <NavLink url="/" text="Inicio" />
       <NavLink url="/conocenos" text="Conócenos" />
+      <NavLink url="/carta" text="Carta" />
       <NavLink url="/reservas" text="Reservas" />
     </HStack>
   )
