@@ -1,24 +1,26 @@
-import { Box, Link } from "@chakra-ui/react"
+import { Box, Flex, Center, Link, Text } from "@chakra-ui/react"
 import { Link as GatsbyLink } from "gatsby"
-import Logo from '../assets/buho-logo.svg'
+import Logo from "../assets/buho-logo-1.svg"
 import React from "react"
 
 const Header = () => (
-  <Box as="header" background="brand.green" h="10rem">
-    <Box as="div" m="0 auto" h="100%" maxW="960px" p="0 1.0875rem">
-      
+  <Box as="header" background="brand.green" h="5rem">
+    <Flex as="div" m="0 auto" h="100%" maxW="960px">
+      <Center w="20%" m="0">
+        <Link as={GatsbyLink} to="/">
+          <Logo />
+        </Link>
+      </Center>
+      <Center w="70%" m="0">
         <Link
           as={GatsbyLink}
-          to="/"
-          color="white"
-          _hover={{ textDecor: "none" }}
+          to="/reservas"
+          color="black"
         >
-          <Box w="20%" h="10rem" m="0">
-            <Logo/>
-          </Box>
+          <Text fontSize="xl">Reservas</Text>
         </Link>
-    
-    </Box>
+      </Center>
+    </Flex>
   </Box>
 )
 
