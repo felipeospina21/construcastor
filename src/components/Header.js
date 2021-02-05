@@ -11,6 +11,7 @@ const Header = () => (
     position="sticky"
     top="0"
     zIndex="100"
+    overflow="hidden"
   >
     <Flex as="div" m="0 auto" h="100%" maxW="1800px">
       <HeaderLogo />

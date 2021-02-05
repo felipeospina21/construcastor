@@ -18,9 +18,42 @@ module.exports = {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /assets/ 
-        }
-      }
+          include: /assets/,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-firestore",
+      options: {
+        credential: {
+          apiKey: "AIzaSyALFdXGKJ_ZAEgWOkvEj-M_x4ur-jmuLoM",
+          authDomain: "buho-app-27082.firebaseapp.com",
+          projectId: "buho-app-27082",
+          storageBucket: "buho-app-27082.appspot.com",
+          messagingSenderId: "384099593732",
+          appId: "1:384099593732:web:19453f5842cf8126d44f51",
+          measurementId: "G-5WBN5QM2YL",
+        },
+        types: [
+          {
+            type: "Bookings",
+            collection: "bookings",
+            map: doc => ({
+              date: doc.bookingInfo.bookingDate,
+              
+            }),
+          },
+          {
+            type: "Author",
+            collection: "authors",
+            map: doc => ({
+              name: doc.name,
+              country: doc.country,
+              books___NODE: doc.books.map(book => book.id),
+            }),
+          },
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
