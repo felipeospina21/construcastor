@@ -9,6 +9,7 @@
     "@chakra-ui/react": "^1.1.6",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "colombian-holidays": "^1.6.5",
     "firebase": "^8.2.4",
     "formik": "^2.2.6",
     "framer-motion": "^3.2.2-rc.1",

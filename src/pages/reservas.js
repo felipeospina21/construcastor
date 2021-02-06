@@ -5,8 +5,8 @@ import SEO from "../components/seo"
 import KiosksContainer from "../components/KiosksContainer"
 import Schedules from "../components/Schedules"
 import DatePickerContainer from "../components/DatePickerContainer"
-import { Heading } from "@chakra-ui/react"
 import BookingConfirmation from "../components/BookingConfirmation"
+import { Heading, Center } from "@chakra-ui/react"
 
 const ReservasPage = ({ data }) => {
   const year = new Date().getFullYear()
@@ -42,9 +42,11 @@ const ReservasPage = ({ data }) => {
   return (
     <>
       <SEO title="Home" />
-      <Heading as="h1" size="2xl" my={3}>
-        Reservas
-      </Heading>
+      <Center my="3rem">
+        <Heading as="h1" size="2xl">
+          Reservas
+        </Heading>
+      </Center>
 
       <DatePickerContainer
         bookingDate={bookingDate}
