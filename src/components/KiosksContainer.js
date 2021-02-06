@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Kiosk from "./Kiosk"
-import { Wrap, Center, Heading } from "@chakra-ui/react"
+import { Grid, GridItem, Heading } from "@chakra-ui/react"
 
 const KiosksContainer = ({
   setBookingKiosk,
@@ -35,11 +35,20 @@ const KiosksContainer = ({
   )
 
   return (
-    <Wrap>
+    <Grid
+      templateColumns={[
+        "1fr",
+        "repeat(2, 1fr)",
+        "repeat(3, 1fr)",
+        "repeat(4, 1fr)",
+      ]}
+    >
       {renderKiosks.length < 1 ? (
-        <Center>
-          <Heading as="h1">No hay kioskos disponibles en este horario</Heading>
-        </Center>
+        <GridItem colSpan={[1, 2, 3, 4]}>
+          <Heading as="h1" textAlign="center" my="2rem">
+            No hay kioskos disponibles en este horario
+          </Heading>
+        </GridItem>
       ) : (
         renderKiosks.map(kiosk => {
           return (
@@ -51,7 +60,7 @@ const KiosksContainer = ({
           )
         })
       )}
-    </Wrap>
+    </Grid>
   )
 }
 

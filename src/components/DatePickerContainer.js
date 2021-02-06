@@ -3,7 +3,7 @@ import DatePicker, { registerLocale } from "react-datepicker"
 import es from "date-fns/locale/es"
 import addMonths from "date-fns/addMonths"
 import getDay from "date-fns/getDay"
-import subDays from "date-fns/subDays"
+
 import colombianHolidays from "colombian-holidays"
 import { Heading, Input } from "@chakra-ui/react"
 import "react-datepicker/dist/react-datepicker.css"
@@ -35,7 +35,7 @@ const DatePickerContainer = ({
       day: dateArr[2],
     }
   })
-  console.log(colombianHolidaysArr)
+  // console.log(colombianHolidaysArr)
 
   return (
     <>

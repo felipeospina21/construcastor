@@ -1,11 +1,11 @@
 import React from "react"
 import { Box, Wrap, WrapItem, Heading } from "@chakra-ui/react"
 
-const BookingConfirmation = ({ bookingDate, bookingTime, bookingKiosk }) => {
+const BookingSummary = ({ bookingDate, bookingTime, bookingKiosk }) => {
   return (
     <Box my="4rem" p="2rem" border="1px solid black">
-      <Heading as="H3" size="lg" mb="1rem">
-        Resumen de su reserva
+      <Heading as="h3" size="lg" mb="1rem">
+        Resumen De Reserva
       </Heading>
       <Wrap>
         <WrapItem>
@@ -43,4 +43,4 @@ const BookingConfirmation = ({ bookingDate, bookingTime, bookingKiosk }) => {
   )
 }
 
-export default BookingConfirmation
+export default BookingSummary
