@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react"
+import { graphql } from "gatsby"
 import firebase from "gatsby-plugin-firebase"
 import SEO from "../components/seo"
 import KiosksContainer from "../components/KiosksContainer"
 import Schedules from "../components/Schedules"
 import DatePickerContainer from "../components/DatePickerContainer"
-import { Button, Center, Heading } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
 import BookingConfirmation from "../components/BookingConfirmation"
 
-const ReservasPage = () => {
-  const [bookingDate, setBookingDate] = useState(new Date())
+const ReservasPage = ({ data }) => {
+  const year = new Date().getFullYear()
+  const month = new Date().getMonth()
+  const day = new Date().getDate()
+  const [bookingDate, setBookingDate] = useState(new Date(year, month, day))
   const [bookingTime, setBookingTime] = useState()
   const [bookings, setBookings] = useState([])
   const [bookingKiosk, setBookingKiosk] = useState()
 
   useEffect(() => {
     getBookings()
-  }, [bookingDate])
+  }, [bookingTime, bookingDate])
 
   const getBookings = async () => {
     firebase
@@ -45,6 +49,7 @@ const ReservasPage = () => {
       <DatePickerContainer
         bookingDate={bookingDate}
         setBookingDate={setBookingDate}
+        setBookingTime={setBookingTime}
       />
 
       <Schedules setBookingTime={setBookingTime} />
@@ -53,6 +58,8 @@ const ReservasPage = () => {
         setBookingKiosk={setBookingKiosk}
         timeSelected={bookingTime}
         bookings={bookings}
+        setBookings={setBookings}
+        kioskosInfo={data}
       />
 
       <BookingConfirmation
@@ -60,10 +67,22 @@ const ReservasPage = () => {
         bookingTime={bookingTime}
         bookingKiosk={bookingKiosk}
         bookings={bookings}
-        // setBooking={setBooking}
       />
     </>
   )
 }
+
+export const query = graphql`
+  query kioskosQuery {
+    allKioskos {
+      edges {
+        node {
+          capacity
+          id
+        }
+      }
+    }
+  }
+`
 
 export default ReservasPage
