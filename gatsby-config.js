@@ -23,9 +23,11 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-firestore",
+      resolve: `gatsby-source-firebase-collections`,
       options: {
-        credential: {
+        // credential or appConfig
+        credential: require(`./credentials.json`),
+        appConfig: {
           apiKey: "AIzaSyALFdXGKJ_ZAEgWOkvEj-M_x4ur-jmuLoM",
           authDomain: "buho-app-27082.firebaseapp.com",
           projectId: "buho-app-27082",
@@ -36,20 +38,10 @@ module.exports = {
         },
         types: [
           {
-            type: "Bookings",
-            collection: "bookings",
+            type: `Kioskos`,
+            collection: `kioskos`,
             map: doc => ({
-              date: doc.bookingInfo.bookingDate,
-              
-            }),
-          },
-          {
-            type: "Author",
-            collection: "authors",
-            map: doc => ({
-              name: doc.name,
-              country: doc.country,
-              books___NODE: doc.books.map(book => book.id),
+              capacity: doc.capacity,
             }),
           },
         ],
