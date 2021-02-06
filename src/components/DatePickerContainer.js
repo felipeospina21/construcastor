@@ -4,10 +4,15 @@ import { Container, Heading } from "@chakra-ui/react"
 
 import "react-datepicker/dist/react-datepicker.css"
 
-const DatePickerContainer = ({ bookingDate, setBookingDate }) => {
+const DatePickerContainer = ({
+  bookingDate,
+  setBookingDate,
+  setBookingTime,
+}) => {
   const setSelectedDate = date => {
     date.setHours(0, 0, 0)
     setBookingDate(date)
+    setBookingTime()
   }
   return (
     <Container bg="brand.green" maxW="1300px" mx={0} p={4} color="black">

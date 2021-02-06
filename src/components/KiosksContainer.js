@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react"
-import firebase from "gatsby-plugin-firebase"
 import Kiosk from "./Kiosk"
 import { Wrap, Center, Heading } from "@chakra-ui/react"
 
-const KiosksContainer = ({ setBookingKiosk, timeSelected, bookings }) => {
+const KiosksContainer = ({
+  setBookingKiosk,
+  timeSelected,
+  bookings,
+  kioskosInfo,
+}) => {
   const [kiosks, setKiosks] = useState([])
   const [bookedKiosks, setBookedKiosks] = useState([])
 
@@ -12,18 +16,7 @@ const KiosksContainer = ({ setBookingKiosk, timeSelected, bookings }) => {
     getFilteredKiosks()
   }, [timeSelected])
 
-  const getKioskInfo = async () => {
-    firebase
-      .firestore()
-      .collection("kioskos")
-      .onSnapshot(querySnapshot => {
-        const docs = []
-        querySnapshot.forEach(doc => {
-          docs.push({ ...doc.data(), id: doc.id })
-        })
-        setKiosks(docs)
-      })
-  }
+  const getKioskInfo = () => setKiosks(kioskosInfo.allKioskos.edges)
 
   const getFilteredKiosks = () => {
     const newBookedKiosks = []
@@ -33,10 +26,13 @@ const KiosksContainer = ({ setBookingKiosk, timeSelected, bookings }) => {
     filteredBookingsByTime.forEach(filteredBooking => {
       newBookedKiosks.push(filteredBooking.bookingInfo.bookingKiosk)
     })
+
     setBookedKiosks(newBookedKiosks)
   }
 
-  const renderKiosks = kiosks.filter(kiosk => !bookedKiosks.includes(kiosk.id))
+  const renderKiosks = kiosks.filter(
+    kiosk => !bookedKiosks.includes(kiosk.node.id)
+  )
 
   return (
     <Wrap>
@@ -48,8 +44,8 @@ const KiosksContainer = ({ setBookingKiosk, timeSelected, bookings }) => {
         renderKiosks.map(kiosk => {
           return (
             <Kiosk
-              key={kiosk.id}
-              kiosk={kiosk}
+              key={kiosk.node.id}
+              kiosk={kiosk.node}
               setBookingKiosk={setBookingKiosk}
             />
           )
