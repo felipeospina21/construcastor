@@ -5,7 +5,7 @@ import addMonths from "date-fns/addMonths"
 import getDay from "date-fns/getDay"
 import subDays from "date-fns/subDays"
 import colombianHolidays from "colombian-holidays"
-import { Container, Heading, Center } from "@chakra-ui/react"
+import { Heading, Input } from "@chakra-ui/react"
 import "react-datepicker/dist/react-datepicker.css"
 
 registerLocale("es", es)
@@ -38,30 +38,28 @@ const DatePickerContainer = ({
   console.log(colombianHolidaysArr)
 
   return (
-    <Center
-      flexDir="column"
-      bg="brand.green"
-      maxW="1300px"
-      mx="auto"
-      p={8}
-      color="black"
-    >
-      <Heading as="h4" size="md" my={2}>
-        Seleccione fecha de reserva
+    <>
+      <Heading as="h4" size="md" mt="0.5rem" mb="1rem">
+        Seleccione la fecha
       </Heading>
 
-      <DatePicker
+      <Input
+        as={DatePicker}
+        bgColor="gray.50"
+        textAlign="center"
+        fontWeight="bold"
+        // --
         dateFormat="dd/MM/yyyy"
         selected={bookingDate}
         onChange={date => setSelectedDate(date)}
         minDate={new Date()}
         maxDate={addMonths(new Date(), 6)}
         locale="es"
-        // filterDate={isWeekend}
-        includeDates={[new Date(), colombianHolidaysArr[2]]}
+        filterDate={isWeekend}
+        // includeDates={[new Date(), colombianHolidaysArr[2]]}
         showDisabledMonthNavigation
       />
-    </Center>
+    </>
   )
 }
 

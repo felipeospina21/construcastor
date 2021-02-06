@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import KiosksContainer from "../components/KiosksContainer"
 import Schedules from "../components/Schedules"
 import DatePickerContainer from "../components/DatePickerContainer"
-import BookingConfirmation from "../components/BookingConfirmation"
+import BookingInfo from "../components/BookingInfo"
 import { Heading, Center } from "@chakra-ui/react"
 
 const ReservasPage = ({ data }) => {
@@ -48,13 +48,22 @@ const ReservasPage = ({ data }) => {
         </Heading>
       </Center>
 
-      <DatePickerContainer
-        bookingDate={bookingDate}
-        setBookingDate={setBookingDate}
-        setBookingTime={setBookingTime}
-      />
+      <Center
+        flexDir="column"
+        bg="brand.green"
+        maxW="1300px"
+        mx="auto"
+        p={8}
+        color="black"
+      >
+        <DatePickerContainer
+          bookingDate={bookingDate}
+          setBookingDate={setBookingDate}
+          setBookingTime={setBookingTime}
+        />
 
-      <Schedules setBookingTime={setBookingTime} />
+        <Schedules setBookingTime={setBookingTime} />
+      </Center>
 
       <KiosksContainer
         setBookingKiosk={setBookingKiosk}
@@ -64,7 +73,7 @@ const ReservasPage = ({ data }) => {
         kioskosInfo={data}
       />
 
-      <BookingConfirmation
+      <BookingInfo
         bookingDate={bookingDate}
         bookingTime={bookingTime}
         bookingKiosk={bookingKiosk}
