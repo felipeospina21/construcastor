@@ -8,7 +8,7 @@ const IndexPage = () => {
     <>
       <SEO title="Home" />
       <Box w="100%" maxH="80vh" maxW="1800px" overflow="hidden">
-        <Image src="panoramica.jpg" alt="Imagen de restaurante" />
+        <Image src="panoramica_auto.jpg" alt="Imagen de restaurante" />
       </Box>
     </>
   )

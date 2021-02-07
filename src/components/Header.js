@@ -10,7 +10,7 @@ const Header = () => (
     h="4.5rem"
     position="sticky"
     top="0"
-    zIndex="100"
+    zIndex="10"
     overflow="hidden"
   >
     <Flex as="div" m="0 auto" h="100%" maxW="1800px">
