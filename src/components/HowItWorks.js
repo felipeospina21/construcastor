@@ -3,7 +3,7 @@ import { Grid, GridItem, Text, Heading, Box, Center } from "@chakra-ui/react"
 
 const HowItWorks = () => {
   return (
-    <Box w="100%" bg="brand.orange">
+    <Box w="100%" bg="brand.orange" pb="1rem">
       <Center
         m={["1rem 0.5rem", "1rem auto"]}
         maxW="800px"
@@ -22,8 +22,8 @@ const HowItWorks = () => {
 
           <NumberGridItem number={2} />
           <TextGridItem>
-            Puedes contratar servicio de parrilleros especializados o preparar
-            tu propio asado
+            Puedes contratar servicio de parrillero especializado o preparar tu
+            propio asado
           </TextGridItem>
 
           <NumberGridItem number={3} />
