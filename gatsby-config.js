@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-instagram-embed`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -63,6 +64,26 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-embedder`,
+            options: {
+              customTransformers: [
+                // Your custom transformers
+              ],
+              services: {
+                // The service-specific options by the name of the service
+              },
+            },
+          },
+
+        ],
+      },
+    },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
