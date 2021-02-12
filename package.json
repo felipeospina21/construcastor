@@ -9,6 +9,7 @@
     "@chakra-ui/react": "^1.1.6",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "@ptkdev/webcomponent-instagram-widget": "^2.8.0",
     "colombian-holidays": "^1.6.5",
     "firebase": "^8.2.4",
     "formik": "^2.2.6",
@@ -32,7 +33,8 @@
     "react-datepicker": "^3.4.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "react-icons": "^4.1.0"
+    "react-icons": "^4.1.0",
+    "react-responsive-carousel": "^3.2.12"
   },
   "devDependencies": {
     "prettier": "2.2.1"
