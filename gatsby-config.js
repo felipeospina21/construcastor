@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Restaurante Búho`,
+    description: `Restaurante de parrilla, tú mismo puedes hacer tu asado. Restaurante campestre rodeado de naturaleza y bosque.`,
+    author: `@felipeospina21`,
   },
   plugins: [
     `@chakra-ui/gatsby-plugin`,
@@ -79,7 +79,6 @@ module.exports = {
               },
             },
           },
-
         ],
       },
     },
