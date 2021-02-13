@@ -44,7 +44,7 @@ const ReservasPage = ({ data }) => {
       <SEO title="Home" />
       <Center my="3rem">
         <Heading as="h1" size="2xl">
-          Reservas
+          Reservas Búho
         </Heading>
       </Center>
 

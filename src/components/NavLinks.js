@@ -29,7 +29,14 @@ const NavLinks = () => {
     // </HStack>
     <>
       <Box w="80%" display="flex" justifyContent="right" alignItems="center">
-        <Icon as={RiMenu3Fill} boxSize="2rem" ml="auto" mr="0.5rem" cursor="pointer" onClick={onOpen}>
+        <Icon
+          as={RiMenu3Fill}
+          boxSize="2rem"
+          ml="auto"
+          mr="0.5rem"
+          cursor="pointer"
+          onClick={onOpen}
+        >
           Open
         </Icon>
       </Box>
@@ -37,13 +44,13 @@ const NavLinks = () => {
       <Drawer placement={placement} onClose={onClose} isOpen={isOpen} size="sm">
         <DrawerOverlay>
           <DrawerContent>
-            <DrawerHeader borderBottomWidth="1px">BUHO</DrawerHeader>
+            <DrawerHeader borderBottomWidth="1px">BÚHO</DrawerHeader>
             <DrawerCloseButton />
             <DrawerBody>
-              <NavLink url="/" text="Inicio" onClose={onClose}/>
-              <NavLink url="/conocenos" text="Conócenos" onClose={onClose}/>
-              <NavLink url="/carta" text="Carta" onClose={onClose}/>
-              <NavLink url="/reservas" text="Reservas" onClose={onClose}/>
+              <NavLink url="/" text="Inicio" onClose={onClose} />
+              <NavLink url="/conocenos" text="Conócenos" onClose={onClose} />
+              <NavLink url="/mirador" text="Mirador Búho" onClose={onClose} />
+              <NavLink url="/reservas" text="Reservas" onClose={onClose} />
             </DrawerBody>
           </DrawerContent>
         </DrawerOverlay>

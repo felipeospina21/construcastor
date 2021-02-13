@@ -8,7 +8,11 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Header />
-      <Box as="main" m=" 0 0.5rem">
+      <Box
+        as="main"
+        m={[" 0 0.5rem", null, null, null, null, "0 auto"]}
+        maxW="1800px"
+      >
         {children}
       </Box>
       <Footer />

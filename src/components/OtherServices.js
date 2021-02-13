@@ -14,13 +14,13 @@ const OtherServices = () => {
           todos los miembros de tu familia se puedan divertir
         </Text>
       </Center>
-      <SimpleGrid columns={[1, null, 2, 3, 4]} spacing={2} m="2rem auto">
+      <SimpleGrid columns={[1, null, 2, 3]} spacing={2} m="2rem auto">
         <ImageContainer src="1.jpg" alt="imagen" />
         <ImageContainer src="2.jpg" alt="imagen" />
         <ImageContainer src="3.jpg" alt="imagen" />
         <ImageContainer src="4.jpg" alt="imagen" />
         <ImageContainer src="5.jpg" alt="imagen" />
-        <ImageContainer src="6.jpg" alt="imagen" />
+        {/* <ImageContainer src="6.jpg" alt="imagen" /> */}
         <ImageContainer src="7.jpg" alt="imagen" />
       </SimpleGrid>
     </Box>

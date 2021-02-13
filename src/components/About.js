@@ -1,8 +1,9 @@
 import React from "react"
-import { Box, Heading, Text, Center } from "@chakra-ui/react"
+import { Heading, Text, Center } from "@chakra-ui/react"
 
 const About = () => {
   return (
+    
     <Center m="2rem auto" flexDir="column" maxW="1100px">
       <Heading as="h1" size="xl">
         Concepto
