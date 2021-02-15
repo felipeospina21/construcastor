@@ -5,11 +5,20 @@ import { Box, Heading, Center } from "@chakra-ui/react"
 const Hero = ({ text, src, alt }) => {
   return (
     <Box w="100%" maxH="80vh" overflow="hidden" position="relative">
+      <Box
+        bgColor="#333"
+        w="100%"
+        h="100%"
+        position="absolute"
+        top="0"
+        zIndex="20"
+        opacity="0.3"
+      />
       <Image src={src} alt={alt} />
       <Center
         position="absolute"
         top={["30px", "50px", "70px"]}
-        zIndex="1"
+        zIndex="25"
         m={["auto 0", null, "auto 10%"]}
         w={["100%", null, "80%"]}
       >

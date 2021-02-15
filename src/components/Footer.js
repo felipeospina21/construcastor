@@ -1,17 +1,25 @@
 import React from "react"
-import ContactInfo from './ContactInfo'
+import ContactInfo from "./ContactInfo"
 
-import { Box } from "@chakra-ui/react"
+import { Grid, Box } from "@chakra-ui/react"
+import OpenHours from "./OpenHours"
+import Social from "./Social"
 
 const Footer = () => {
   return (
     <Box
       as="footer"
       background="brand.green"
-      h="4.5rem"
-      overflow="hidden"
+      fontSize="sm"
+      p={["0.5rem", "1rem"]}
     >
-      <ContactInfo/>
+      <Box maxW="500px" m="auto">
+        <Grid templateColumns="1fr 0.5fr" gap={3}>
+          <OpenHours />
+          <Social />
+        </Grid>
+        <ContactInfo />
+      </Box>
     </Box>
   )
 }
