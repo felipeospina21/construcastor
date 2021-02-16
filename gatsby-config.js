@@ -26,31 +26,31 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-source-firebase-collections`,
-      options: {
-        // credential or appConfig
-        credential: firebaseCredentials,
-        appConfig: {
-          apiKey: "AIzaSyALFdXGKJ_ZAEgWOkvEj-M_x4ur-jmuLoM",
-          authDomain: "buho-app-27082.firebaseapp.com",
-          projectId: "buho-app-27082",
-          storageBucket: "buho-app-27082.appspot.com",
-          messagingSenderId: "384099593732",
-          appId: "1:384099593732:web:19453f5842cf8126d44f51",
-          measurementId: "G-5WBN5QM2YL",
-        },
-        types: [
-          {
-            type: `Kioskos`,
-            collection: `kioskos`,
-            map: doc => ({
-              capacity: doc.capacity,
-            }),
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-firebase-collections`,
+    //   options: {
+    //     // credential or appConfig
+    //     credential: firebaseCredentials,
+    //     appConfig: {
+    //       apiKey: "AIzaSyALFdXGKJ_ZAEgWOkvEj-M_x4ur-jmuLoM",
+    //       authDomain: "buho-app-27082.firebaseapp.com",
+    //       projectId: "buho-app-27082",
+    //       storageBucket: "buho-app-27082.appspot.com",
+    //       messagingSenderId: "384099593732",
+    //       appId: "1:384099593732:web:19453f5842cf8126d44f51",
+    //       measurementId: "G-5WBN5QM2YL",
+    //     },
+    //     types: [
+    //       {
+    //         type: `Kioskos`,
+    //         collection: `kioskos`,
+    //         map: doc => ({
+    //           capacity: doc.capacity,
+    //         }),
+    //       },
+    //     ],
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
