@@ -1,9 +1,8 @@
 import React from "react"
 import ContactInfo from "./ContactInfo"
-
-import { Grid, Box } from "@chakra-ui/react"
 import OpenHours from "./OpenHours"
 import Social from "./Social"
+import { Grid, Box } from "@chakra-ui/react"
 
 const Footer = () => {
   return (
@@ -14,7 +13,7 @@ const Footer = () => {
       p={["0.5rem", "1rem"]}
     >
       <Box maxW="500px" m="auto">
-        <Grid templateColumns="1fr 0.5fr" gap={3}>
+        <Grid templateColumns="1fr 0.5fr" gap={1}>
           <OpenHours />
           <Social />
         </Grid>

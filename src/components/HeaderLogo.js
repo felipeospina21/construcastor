@@ -5,7 +5,7 @@ import Logo from "../assets/buho-logo-1.svg"
 
 const HeaderLogo = () => {
   return (
-    <Link as={GatsbyLink} to="/">
+    <Link as={GatsbyLink} to="/" _focus={{ bg: "none" }}>
       <Icon as={Logo} w="70px" h="65px" mt="0.5rem" ml="0.5rem" />
     </Link>
   )

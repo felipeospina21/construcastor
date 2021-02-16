@@ -8,6 +8,7 @@ module.exports = {
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-instagram-embed`,
+    'gatsby-plugin-breakpoints',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
