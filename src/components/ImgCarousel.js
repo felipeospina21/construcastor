@@ -25,7 +25,7 @@ const ImgCarousel = () => {
       </Center>
       <Carousel
         autoPlay="true"
-        autoFocus="true"
+        // autoFocus="true"
         centerMode={false}
         infiniteLoop="true"
         // centerSlidePercentage={95}

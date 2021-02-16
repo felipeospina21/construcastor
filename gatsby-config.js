@@ -1,3 +1,5 @@
+const firebaseCredentials = require(`./credentials.json`)
+
 module.exports = {
   siteMetadata: {
     title: `Restaurante Búho`,
@@ -28,7 +30,7 @@ module.exports = {
       resolve: `gatsby-source-firebase-collections`,
       options: {
         // credential or appConfig
-        credential: require(`./credentials.json`),
+        credential: firebaseCredentials,
         appConfig: {
           apiKey: "AIzaSyALFdXGKJ_ZAEgWOkvEj-M_x4ur-jmuLoM",
           authDomain: "buho-app-27082.firebaseapp.com",
