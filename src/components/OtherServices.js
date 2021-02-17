@@ -1,8 +1,16 @@
-import React from "react"
-import { Box, SimpleGrid, Center, Heading, Text } from "@chakra-ui/react"
-import Image from "./Image"
+import React, { useState } from "react"
+import { Box, Center, Heading, Text } from "@chakra-ui/react"
+import ImgGrid from "./ImgGrid"
 
 const OtherServices = () => {
+  const [buhoImagesList] = useState([
+    { src: "1.jpg", alt: "imagen" },
+    { src: "2.jpg", alt: "imagen" },
+    { src: "3.jpg", alt: "imagen" },
+    { src: "4.jpg", alt: "imagen" },
+    { src: "5.jpg", alt: "imagen" },
+    { src: "7.jpg", alt: "imagen" },
+  ])
   return (
     <Box m="2rem auto" maxW="1300px">
       <Center flexDir="column">
@@ -14,25 +22,9 @@ const OtherServices = () => {
           todos los miembros de tu familia se puedan divertir
         </Text>
       </Center>
-      <SimpleGrid columns={[1, null, 2, 3]} spacing={2} m="2rem auto">
-        <ImageContainer src="1.jpg" alt="imagen" />
-        <ImageContainer src="2.jpg" alt="imagen" />
-        <ImageContainer src="3.jpg" alt="imagen" />
-        <ImageContainer src="4.jpg" alt="imagen" />
-        <ImageContainer src="5.jpg" alt="imagen" />
-        {/* <ImageContainer src="6.jpg" alt="imagen" /> */}
-        <ImageContainer src="7.jpg" alt="imagen" />
-      </SimpleGrid>
+      <ImgGrid imgList={buhoImagesList} />
     </Box>
   )
 }
 
 export default OtherServices
-
-export const ImageContainer = ({ src, alt }) => (
-  <Center>
-    <Box h="320px" w="320px" overflow="hidden">
-      <Image src={src} alt={alt} />
-    </Box>
-  </Center>
-)
