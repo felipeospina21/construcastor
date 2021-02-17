@@ -1,4 +1,4 @@
-const firebaseCredentials = require(`./credentials.json`)
+// const firebaseCredentials = require(`./credentials.json`)
 
 module.exports = {
   siteMetadata: {
@@ -24,6 +24,13 @@ module.exports = {
         rule: {
           include: /assets/,
         },
+      },
+    },
+    {
+      resolve: "@horacioh/gatsby-theme-instagram",
+      options: {
+        type: "account",
+        username: "miradorbuho",
       },
     },
     // {

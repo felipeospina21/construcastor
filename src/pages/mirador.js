@@ -2,7 +2,7 @@ import React from "react"
 import SEO from "../components/seo"
 import Hero from "../components/Hero"
 import { Box, Text, Center } from "@chakra-ui/react"
-import "@ptkdev/webcomponent-instagram-widget"
+import { Grid as InstagramGrid } from "@horacioh/gatsby-theme-instagram"
 
 const MiradorPage = () => {
   return (
@@ -24,11 +24,10 @@ const MiradorPage = () => {
           </Center>
         </Center>
       </Box>
-      <instagram-widget
-        username="@miradorbuho"
-        items-limit={6}
-        grid="responsive"
-      ></instagram-widget>
+
+      <Box m={["1rem", null, null, "2rem"]}>
+        <InstagramGrid />
+      </Box>
     </>
   )
 }
