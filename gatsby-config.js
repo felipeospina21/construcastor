@@ -9,7 +9,6 @@ module.exports = {
   plugins: [
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-instagram-embed`,
     'gatsby-plugin-breakpoints',
     {
       resolve: `gatsby-source-filesystem`,
@@ -24,13 +23,6 @@ module.exports = {
         rule: {
           include: /assets/,
         },
-      },
-    },
-    {
-      resolve: "gatsby-source-instagram",
-      options: {
-        type: "user-profile",
-        username: "miradorbuho",
       },
     },
     // {
