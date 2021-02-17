@@ -27,9 +27,9 @@ module.exports = {
       },
     },
     {
-      resolve: "@horacioh/gatsby-theme-instagram",
+      resolve: "gatsby-source-instagram",
       options: {
-        type: "account",
+        type: "user-profile",
         username: "miradorbuho",
       },
     },

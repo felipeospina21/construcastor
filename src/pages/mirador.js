@@ -2,7 +2,6 @@ import React from "react"
 import SEO from "../components/seo"
 import Hero from "../components/Hero"
 import { Box, Text, Center } from "@chakra-ui/react"
-import { Grid as InstagramGrid } from "@horacioh/gatsby-theme-instagram"
 
 const MiradorPage = () => {
   return (
@@ -25,9 +24,7 @@ const MiradorPage = () => {
         </Center>
       </Box>
 
-      <Box m={["1rem", null, null, "2rem"]}>
-        <InstagramGrid />
-      </Box>
+      <Box m={["1rem", null, null, "2rem"]}></Box>
     </>
   )
 }
