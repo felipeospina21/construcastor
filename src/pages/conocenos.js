@@ -9,8 +9,8 @@ const ConocenosPage = () => {
     <>
       <SEO title="conócenos" />
       <Hero text="Conócenos" src="s4.jpg" alt="foto" />
-      <Box>
-        <Center m="2rem auto" flexDir="column" maxW="1100px">
+      <Box m="2rem auto" maxW="1100px">
+        <Center m={["1.5rem 0.8rem"]} flexDir="column">
           <Text fontSize={[null, "2xl"]}>
             Buho es un concepto de restaurante campestre especializado en asados
             y parrilla. Esta conformado por kioskos con capacidad entre 8 - 10
@@ -21,7 +21,7 @@ const ConocenosPage = () => {
             asado y en el mejor ambiente campestre de la ciudad
           </Text>
         </Center>
-        <Center>
+        <Center m="2rem">
           <Heading as="h2" size="xl">
             Nosotros
           </Heading>

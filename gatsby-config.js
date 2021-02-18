@@ -9,7 +9,7 @@ module.exports = {
   plugins: [
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-breakpoints',
+    "gatsby-plugin-breakpoints",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -94,7 +94,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/buho-icon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

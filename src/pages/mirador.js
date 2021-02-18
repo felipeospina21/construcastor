@@ -17,19 +17,22 @@ const MiradorPage = () => {
     <>
       <SEO title="mirador búho" />
       <Hero text="Mirador Búho" src="s7.jpg" alt="foto del mirador de búho" />
-      <Box m="2rem auto" flexDir="column" maxW="1000px">
-        <Heading as="h3" size="lg" mb="1rem">
-          ¡Estamos al lado de Búho, pero somos otro parche!
-        </Heading>
+      <Box m="2rem auto" maxW="1000px">
+        <Box m={["1.5rem 0.8rem 0 0.8rem"]} flexDir="column">
+          <Heading as="h3" size="lg" mb="1rem">
+            ¡Estamos al lado de Búho, pero somos otro parche!
+          </Heading>
 
-        <Text fontSize={[null, "2xl"]}>
-          Cerveza, amigos, cocteles, buena música y la mejor vista de la ciudad.
-        </Text>
-        <Text fontSize={[null, "2xl"]}>
-          Nuestro Mirador Búho, es un espacio increible para disfrutar con tus
-          amigos y compartir momentos agradables, todo en un lugar mágico,
-          inmerso en medio de un bosque.
-        </Text>
+          <Text fontSize={[null, "2xl"]}>
+            Cerveza, amigos, cocteles, buena música y la mejor vista de la
+            ciudad.
+          </Text>
+          <Text fontSize={[null, "2xl"]}>
+            Nuestro Mirador Búho, es un espacio increible para disfrutar con tus
+            amigos y compartir momentos agradables, todo en un lugar mágico,
+            inmerso en medio de un bosque.
+          </Text>
+        </Box>
       </Box>
 
       <ImgGrid imgList={miradorImagesList} />
