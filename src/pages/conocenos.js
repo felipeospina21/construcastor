@@ -1,8 +1,7 @@
 import React from "react"
 import SEO from "../components/seo"
 import Hero from "../components/Hero"
-import { Box, Text, Center, Heading } from "@chakra-ui/react"
-import AvatarGrid from "../components/AvatarGrid"
+import { Box, Text, Center } from "@chakra-ui/react"
 
 const ConocenosPage = () => {
   return (
@@ -21,12 +20,6 @@ const ConocenosPage = () => {
             asado y en el mejor ambiente campestre de la ciudad
           </Text>
         </Center>
-        <Center m="2rem">
-          <Heading as="h2" size="xl">
-            Nosotros
-          </Heading>
-        </Center>
-        <AvatarGrid />
       </Box>
     </>
   )

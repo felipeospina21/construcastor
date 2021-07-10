@@ -10,7 +10,8 @@ const Header = () => {
   return (
     <Box
       as="header"
-      background="brand.green"
+      background="white"
+      
       h="5rem"
       position="sticky"
       top="0"

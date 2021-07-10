@@ -12,14 +12,14 @@ const IndexPage = () => {
     <>
       <SEO title="Inicio" />
       <Hero
-        text="Búho"
-        src="panoramica_auto.jpg"
-        alt="Imagen panorámica de restaurante búho"
+        text="Construcastor"
+        src="s4.jpg"
+        alt="Imagen construcción al atardecer"
       />
       <About />
-      <HowItWorks />
+      {/* <HowItWorks /> */}
       <ImgCarousel />
-      <OtherServices />
+      {/* <OtherServices /> */}
       <GoogleMap />
     </>
   )

@@ -5,9 +5,8 @@ const OpenHours = () => {
   return (
     <GridItem>
       <Text fontWeight="bold">Horario</Text>
-      <Text>Jueves a Sábados: 12pm - 12am</Text>
-      <Text>Domingos: 12pm - 8pm</Text>
-      <Text>Lunes Festivos: 12pm - 8pm</Text>
+      <Text>Lunes a Viernes: 7:30am - 5:00pm</Text>
+      <Text>Sábados: 7:30am - 1:30pm</Text>
     </GridItem>
   )
 }

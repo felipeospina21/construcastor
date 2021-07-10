@@ -18,7 +18,8 @@ const GoogleMap = () => {
         borderRadius="5px"
       >
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.8539608344795!2d-75.5608571849606!3d6.150306595547045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46831133b1a6af%3A0x609bdb8adec4655d!2sBuho%20Parrilla%20Entre%20Pinos!5e0!3m2!1ses-419!2sco!4v1613179909934!5m2!1ses-419!2sco"
+          // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.8539608344795!2d-75.5608571849606!3d6.150306595547045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e46831133b1a6af%3A0x609bdb8adec4655d!2sBuho%20Parrilla%20Entre%20Pinos!5e0!3m2!1ses-419!2sco!4v1613179909934!5m2!1ses-419!2sco"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1983.0533588361466!2d-75.57440379277469!3d6.249666528386396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4429ca6bbf668f%3A0xb139723387af2a7e!2sConstrucastor!5e0!3m2!1ses-419!2sco!4v1625952892180!5m2!1ses-419!2sco"
           alt="mapa de cómo llegar a búho"
           title="Mapa"
         />

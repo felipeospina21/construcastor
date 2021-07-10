@@ -2,8 +2,8 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Restaurante Búho`,
-    description: `Restaurante de parrilla, tú mismo puedes hacer tu asado. Restaurante campestre rodeado de naturaleza y bosque.`,
+    title: `Ferreteria Construcastor`,
+    description: `Ferreteria especializada en tubería y tejas, con más de 20 años de experiencia.`,
     author: `@felipeospina21`,
   },
   plugins: [
@@ -25,47 +25,8 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-source-firebase-collections`,
-    //   options: {
-    //     // credential or appConfig
-    //     credential: firebaseCredentials,
-    //     appConfig: {
-    //       apiKey: "AIzaSyALFdXGKJ_ZAEgWOkvEj-M_x4ur-jmuLoM",
-    //       authDomain: "buho-app-27082.firebaseapp.com",
-    //       projectId: "buho-app-27082",
-    //       storageBucket: "buho-app-27082.appspot.com",
-    //       messagingSenderId: "384099593732",
-    //       appId: "1:384099593732:web:19453f5842cf8126d44f51",
-    //       measurementId: "G-5WBN5QM2YL",
-    //     },
-    //     types: [
-    //       {
-    //         type: `Kioskos`,
-    //         collection: `kioskos`,
-    //         map: doc => ({
-    //           capacity: doc.capacity,
-    //         }),
-    //       },
-    //     ],
-    //   },
-    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: "gatsby-plugin-firebase",
-      options: {
-        credentials: {
-          apiKey: "AIzaSyALFdXGKJ_ZAEgWOkvEj-M_x4ur-jmuLoM",
-          authDomain: "buho-app-27082.firebaseapp.com",
-          projectId: "buho-app-27082",
-          storageBucket: "buho-app-27082.appspot.com",
-          messagingSenderId: "384099593732",
-          appId: "1:384099593732:web:19453f5842cf8126d44f51",
-          measurementId: "G-5WBN5QM2YL",
-        },
-      },
-    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

@@ -1,8 +1,8 @@
 export const brandTheme = {
   colors: {
     brand: {
-      green: "#b3d1af",
-      orange: "#e69136",
+      blue: "#0000cc",
+      yellow: "#fd1",
     },
   },
 }
