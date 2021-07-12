@@ -5,7 +5,7 @@ const About = () => {
   return (
     <Center m="2rem auto" flexDir="column" maxW="1100px">
       <Heading as="h1" size="xl">
-        Concepto
+        Conócenos
       </Heading>
       <Center m={["1.5rem 0.8rem 0 0.8rem"]} flexDir="column">
         <Text fontSize={[null, "2xl"]}>

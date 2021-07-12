@@ -6,29 +6,27 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const ImgCarousel = () => {
   const [slides] = useState([
-    { src: "s1.jpg", alt: "foto" },
-    { src: "s2.jpg", alt: "foto" },
-    { src: "s3.jpg", alt: "foto" },
-    { src: "s4.jpg", alt: "foto" },
-    { src: "s5.jpg", alt: "foto" },
-    { src: "s6.jpg", alt: "foto" },
-    { src: "s7.jpg", alt: "foto" },
-    { src: "s8.jpg", alt: "foto" },
-    { src: "s9.jpg", alt: "foto" },
+    { src: "v1.jpg", alt: "foto" },
+    { src: "v2.jpg", alt: "foto" },
+    { src: "v3.jpg", alt: "foto" },
+    { src: "v4.jpg", alt: "foto" },
+    { src: "v5.jpg", alt: "foto" },
+    { src: "v6.jpg", alt: "foto" },
   ])
   return (
     <Box w="100%" maxW="1300px" margin="2rem auto">
       <Center mb="2rem">
         <Heading as="h1" size="xl">
-          Fotos
+          CONSTRUCASTOR
         </Heading>
       </Center>
       <Carousel
         autoPlay="true"
-        // autoFocus="true"
+        showArrows={false}
+        showStatus={false}
         centerMode={false}
+        swipeable={true}
         infiniteLoop="true"
-        // centerSlidePercentage={95}
         interval={5000}
       >
         {slides.map(slide => {

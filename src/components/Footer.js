@@ -14,15 +14,15 @@ const Footer = () => {
         p={["0.5rem", "1rem"]}
       >
         <Box maxW="500px" m="auto">
-          <Grid templateColumns="1fr 0.5fr" gap={1}>
+          <Grid templateColumns={["1fr 0.5fr", "1fr 0.3fr"]} rowGap={5} columnGap={2}>
             <OpenHours />
             <Social />
+            <ContactInfo />
           </Grid>
-          <ContactInfo />
         </Box>
       </Box>
-      <Center fontSize="xs" m="0.5rem" >
-      Creado por Felipe Ospina
+      <Center fontSize="xs" m="0.5rem">
+        Creado por Felipe Ospina
       </Center>
     </>
   )
