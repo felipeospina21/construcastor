@@ -3,7 +3,7 @@ import { GridItem, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react"
 
 const OpenHours = () => {
   return (
-    <GridItem maxW="250px">
+    <GridItem maxW="250px" colSpan="2" margin="auto">
       <Table size="sm">
         <Thead>
           <Tr>

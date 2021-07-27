@@ -1,12 +1,16 @@
 import React from "react"
-import NavLinks from './NavLinks'
-import { HStack } from "@chakra-ui/react"
+import { Center, Heading } from "@chakra-ui/react"
 
 const FixedNav = () => {
   return (
-    <HStack w="100%" spacing="5rem" justifyContent="center">
-      <NavLinks/>
-    </HStack>
+    <Center w={["100%", "400px"]} flexDir="column">
+      <Heading as="h1" size="xl" color="brand.blue">
+        CONSTRUCASTOR
+      </Heading>
+      <Heading as="h2" size="m" color="brand.blue">
+        Su mejor proveedor
+      </Heading>
+    </Center>
   )
 }
 

@@ -1,40 +1,70 @@
 import React from "react"
-import { Grid, GridItem, Text, Heading, Box, Center } from "@chakra-ui/react"
+import {
+  Grid,
+  GridItem,
+  Text,
+  Heading,
+  Box,
+  Center,
+  Icon,
+} from "@chakra-ui/react"
+import {
+  GiStraightPipe,
+  GiValve,
+  GiLargePaintBrush,
+  GiAbstract082,
+  GiAbstract070,
+  GiBrickWall,
+  GiHammerNails,
+} from "react-icons/gi"
 
 const HowItWorks = () => {
   return (
-    <Box w="100%" bg="brand.orange" pb="1rem">
+    <Box w="100%" pb="1rem">
       <Center
         m={["1rem 0.5rem", "1rem auto"]}
         maxW="800px"
         flexDir="column"
-        color="white"
+        // color="white"
       >
         <Center m="2rem 0">
           <Heading as="h1" size="xl">
-            ¿Cómo Funciona?
+            Líneas y Productos
           </Heading>
         </Center>
 
         <Grid templateColumns={["0.2fr 2fr", "0.3fr 2fr"]} gap={4}>
-          <NumberGridItem number={1} />
-          <TextGridItem>Reserva tu kiosco</TextGridItem>
+          <NumberGridItem number={GiStraightPipe} />
+          <TextGridItem>Tuberías y Accesorios de PVC</TextGridItem>
 
-          <NumberGridItem number={2} />
+          <NumberGridItem number={GiValve} />
+          <TextGridItem>Abastos, Acoples, Válvulas y Griferias</TextGridItem>
+
+          <NumberGridItem number={GiAbstract070} />
           <TextGridItem>
-            Puedes contratar servicio de parrillero especializado o preparar tu
-            propio asado
+            Tejas en fibrocemento, Policarbonato, Plásticas y Polipropileno
           </TextGridItem>
 
-          <NumberGridItem number={3} />
+          <NumberGridItem number={GiBrickWall} />
           <TextGridItem>
-            Escoge los combos que deseas para tu asado
+            Sistema Liviano Drywall y Superboard, Perfileria, Cintas, Masilla,
+            Tornilleria
           </TextGridItem>
 
-          <NumberGridItem number={4} />
-          <TextGridItem>Disfruta con tu familia y amigos !</TextGridItem>
+          <NumberGridItem number={GiLargePaintBrush} />
+          <TextGridItem>
+            Pinturas, Brocha, Rodillos, Impermeabilizantes
+          </TextGridItem>
 
-          <GridItem
+          <NumberGridItem number={GiAbstract082} />
+          <TextGridItem>
+            Lavaplatos en Acero, Rejillas Metálicas y PVC
+          </TextGridItem>
+
+          <NumberGridItem number={GiHammerNails} />
+          <TextGridItem>Clavo Común y Acero</TextGridItem>
+
+          {/* <GridItem
             colSpan={2}
             ml="2rem"
             mt="0.5rem"
@@ -47,7 +77,7 @@ const HowItWorks = () => {
             <Text fontSize="xs">
               * No está permitido el ingreso de comida ni bebidas
             </Text>
-          </GridItem>
+          </GridItem> */}
         </Grid>
       </Center>
     </Box>
@@ -67,9 +97,7 @@ export const NumberGridItem = ({ number }) => (
     justifyContent="center"
     m="auto"
   >
-    <Text margin="auto" fontSize="2xl">
-      {number}
-    </Text>
+    <Icon as={number} boxSize="2rem" mx="1rem" />
   </GridItem>
 )
 

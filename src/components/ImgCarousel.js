@@ -1,4 +1,4 @@
-import { Box, Heading, Center } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import React, { useState } from "react"
 import Slide from "./Slide"
 import { Carousel } from "react-responsive-carousel"
@@ -14,12 +14,7 @@ const ImgCarousel = () => {
     { src: "v6.jpg", alt: "foto" },
   ])
   return (
-    <Box w="100%" maxW="1300px" margin="2rem auto">
-      <Center mb="2rem">
-        <Heading as="h1" size="xl">
-          CONSTRUCASTOR
-        </Heading>
-      </Center>
+    <Box w="100%" maxW="1850px" margin="0 auto">
       <Carousel
         autoPlay="true"
         showArrows={false}
