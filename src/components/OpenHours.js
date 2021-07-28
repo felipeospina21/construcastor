@@ -16,7 +16,7 @@ const OpenHours = () => {
               Lunes a Viernes
             </Td>
             <Td pl="0" py="0.2rem">
-              7:30am
+              8:00am
             </Td>
             <Td pl="0" py="0.2rem">
               -
@@ -30,7 +30,7 @@ const OpenHours = () => {
               Sábados
             </Td>
             <Td pl="0" py="0.2rem">
-              7:30am
+              8:00am
             </Td>
             <Td pl="0" py="0.2rem">
               -

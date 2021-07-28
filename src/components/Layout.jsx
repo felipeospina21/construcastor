@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       <Box
         as="main"
         m={[" 0 0.5rem", null, null, null, null, "0 auto"]}
-        maxW="1850px"
+        maxW="1700px"
       >
         {children}
       </Box>

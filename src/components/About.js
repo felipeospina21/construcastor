@@ -3,7 +3,7 @@ import { Heading, Text, Center } from "@chakra-ui/react"
 
 const About = () => {
   return (
-    <Center m="2rem auto" flexDir="column" maxW="1100px">
+    <Center m={["2rem auto", "3rem auto"]} flexDir="column" maxW="1100px">
       <Heading as="h1" size="xl">
         Conócenos
       </Heading>

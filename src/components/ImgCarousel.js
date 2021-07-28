@@ -1,20 +1,12 @@
 import { Box } from "@chakra-ui/react"
-import React, { useState } from "react"
+import React from "react"
 import Slide from "./Slide"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-const ImgCarousel = () => {
-  const [slides] = useState([
-    { src: "v1.jpg", alt: "foto" },
-    { src: "v2.jpg", alt: "foto" },
-    { src: "v3.jpg", alt: "foto" },
-    { src: "v4.jpg", alt: "foto" },
-    { src: "v5.jpg", alt: "foto" },
-    { src: "v6.jpg", alt: "foto" },
-  ])
+const ImgCarousel = ({ array }) => {
   return (
-    <Box w="100%" maxW="1850px" margin="0 auto">
+    <Box w="100%" maxW="1750px" margin="0 auto">
       <Carousel
         autoPlay="true"
         showArrows={false}
@@ -24,9 +16,9 @@ const ImgCarousel = () => {
         infiniteLoop="true"
         interval={5000}
       >
-        {slides.map(slide => {
+        {array.map((slide, index) => {
           const { src, alt } = slide
-          return <Slide src={src} alt={alt} />
+          return <Slide key={index} src={src} alt={alt} />
         })}
       </Carousel>
     </Box>

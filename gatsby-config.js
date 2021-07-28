@@ -2,8 +2,8 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Ferreteria Construcastor`,
-    description: `Ferreteria especializada en tubería y tejas, con más de 20 años de experiencia.`,
+    title: `Construcastor`,
+    description: `Almacén de materiales para construcción`,
     author: `@felipeospina21`,
   },
   plugins: [
