@@ -47,22 +47,22 @@ const HowItWorks = () => {
 
           <NumberGridItem number={GiBrickWall} />
           <TextGridItem>
-            Sistema Liviano Drywall y Superboard, Perfileria, Cintas, Masilla,
+            Sistema liviano drywall y Superboard, Perfileria, Cintas, Masilla,
             Tornilleria
           </TextGridItem>
 
           <NumberGridItem number={GiLargePaintBrush} />
           <TextGridItem>
-            Pinturas, Brocha, Rodillos, Impermeabilizantes
+            Pinturas, Brochas, Rodillos, Impermeabilizantes
           </TextGridItem>
 
           <NumberGridItem number={GiAbstract082} />
           <TextGridItem>
-            Lavaplatos en Acero, Rejillas Metálicas y PVC
+            Lavaplatos en acero, Rejillas Metálicas y PVC
           </TextGridItem>
 
           <NumberGridItem number={GiHammerNails} />
-          <TextGridItem>Clavo Común y Acero</TextGridItem>
+          <TextGridItem>Clavo común y en acero</TextGridItem>
 
           {/* <GridItem
             colSpan={2}

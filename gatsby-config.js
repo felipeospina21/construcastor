@@ -11,6 +11,17 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-breakpoints",
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "G-J47DBKB66Z",
+        head: true,
+        respectDNT: false,
+        exclude: ["/preview/**", "/do-not-track/me/too/"],
+        pageTransitionDelay: 0,
+        defer: false,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
