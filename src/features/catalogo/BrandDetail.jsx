@@ -5,7 +5,7 @@ import BrandCarousel from "./BrandCarousel"
 import BrandCategories from "./BrandCategories"
 
 export default function BrandDetail({ data }) {
-  const { frontmatter } = data
+  const { frontmatter: {brandLogo, title, categories, gallery} } = data
   return (
     <Box display="flex" flexDir="column" justifyContent="center">
       <Box
@@ -17,18 +17,18 @@ export default function BrandDetail({ data }) {
         justifyContent="center"
       >
         <FetchedImage
-          src={frontmatter.brandLogo}
+          src={brandLogo}
           alt="logo"
           gatsbyImageData="gatsbyImageData(placeholder: DOMINANT_COLOR, height: 200)"
         />
       </Box>
       <Center my={["1rem", "2rem"]} flexDir="column" mx="auto">
         <Heading as="h1" size="xl">
-          {frontmatter.title}
+          {title}
         </Heading>
       </Center>
-      <BrandCategories categories={frontmatter.categories} />
-      <BrandCarousel gallery={frontmatter.gallery} />
+      <BrandCategories categories={categories} />
+      {gallery?.length ? <BrandCarousel gallery={gallery} /> : null}
     </Box>
   )
 }
