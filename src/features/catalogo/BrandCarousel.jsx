@@ -7,12 +7,12 @@ export default function BrandCarousel({ gallery }) {
   return (
     <Box w="100%" maxW="1750px" margin="2rem auto">
       <Carousel
-        autoPlay="true"
-        showArrows={false}
+        autoPlay={true}
+        swipeable={true}
+        infiniteLoop={true}
+        showArrows={true}
         showStatus={false}
         centerMode={false}
-        swipeable={true}
-        infiniteLoop="true"
         interval={5000}
       >
         {gallery.map((image, index) => {
@@ -20,13 +20,14 @@ export default function BrandCarousel({ gallery }) {
             <Box
               key={index}
               h={["300px", "400px", "500px", "650px"]}
-              w="100%"
+              w={["100%", '80%', '50%']}
               overflow="hidden"
+              mx='auto'
             >
               <FetchedImage
                 src={image}
                 alt="imagen"
-                gatsbyImageData="gatsbyImageData(placeholder: DOMINANT_COLOR, width:900)"
+                gatsbyImageData="gatsbyImageData(placeholder: DOMINANT_COLOR, height:500)"
               />
             </Box>
           )

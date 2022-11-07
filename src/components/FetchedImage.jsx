@@ -4,6 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import PropTypes from "prop-types"
 
 export default function FetchedImage({ src, gatsbyImageData, ...rest }) {
+  console.log(gatsbyImageData)
   const data = useStaticQuery(graphql`
     query {
       images: allFile(filter: { absolutePath: { regex: "/static/img/" } }) {

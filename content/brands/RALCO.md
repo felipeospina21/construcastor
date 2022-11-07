@@ -1,6 +1,7 @@
 ---
 gallery:
   - /img/s1.jpg
+  - /img/s1.jpg
 templateKey: brands
 title: RALCO
 brandLogo: /img/logo_ralco.jpg
