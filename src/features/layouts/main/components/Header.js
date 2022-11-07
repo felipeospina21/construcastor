@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <Box
       as="header"
-      h="5rem"
+      h="7rem"
       position="sticky"
       top="0"
       zIndex="30"
@@ -16,7 +16,7 @@ const Header = () => {
       maxW="1750px"
       m="0 auto"
     >
-      <Flex as="div" m="0 auto" h="100%" maxW="1750px">
+      <Flex as="div" m="0 auto" h="100%" maxW="1750px" align="center">
         <HeaderLogo />
         <FixedNav />
       </Flex>

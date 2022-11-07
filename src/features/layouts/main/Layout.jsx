@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Header from "./Header"
-import Footer from "./Footer"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 import { Box } from "@chakra-ui/react"
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <>
       <Header />
       <Box
         as="main"
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
         {children}
       </Box>
       <Footer />
-    </div>
+    </>
   )
 }
 

@@ -63,21 +63,6 @@ const HowItWorks = () => {
 
           <NumberGridItem number={GiHammerNails} />
           <TextGridItem>Clavo común y en acero</TextGridItem>
-
-          {/* <GridItem
-            colSpan={2}
-            ml="2rem"
-            mt="0.5rem"
-            borderTop="1px solid black"
-          >
-            <Text fontSize="xs">* Costo parrillero $ 30mil x hora</Text>
-            <Text fontSize="xs">
-              * Carbón y utencilios para el asado incluidos
-            </Text>
-            <Text fontSize="xs">
-              * No está permitido el ingreso de comida ni bebidas
-            </Text>
-          </GridItem> */}
         </Grid>
       </Center>
     </Box>

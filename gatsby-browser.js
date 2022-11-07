@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "./src/components/Layout"
+import Layout from "./src/features/layouts/main/Layout"
 import { extendTheme, ChakraProvider } from "@chakra-ui/react"
 import { brandTheme } from "./src/styles/theme"
 

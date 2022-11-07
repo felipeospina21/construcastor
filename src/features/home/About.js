@@ -7,7 +7,10 @@ const About = () => {
       <Heading as="h1" size="xl">
         Conócenos
       </Heading>
-      <Box m={["1.5rem 0.5rem 0 0.5rem",null,null,"1.5rem auto 0 auto"]} maxW="900px">
+      <Box
+        m={["1.5rem 0.5rem 0 0.5rem", null, null, "1.5rem auto 0 auto"]}
+        maxW="900px"
+      >
         <Text fontSize={[null, "2xl"]}>
           Construcastor es un negocio dedicado a la venta de materiales
           relacionados con la construcción. Nos especializamos en tuberías y

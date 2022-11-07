@@ -2,9 +2,9 @@ import React from "react"
 import Image from "../components/Image"
 import { Box } from "@chakra-ui/react"
 
-const Hero = ({ src, alt }) => {
+const Hero = ({ src, alt, ...rest }) => {
   return (
-    <Box m="2.5rem auto">
+    <Box {...rest}>
       <Image src={src} alt={alt} />
     </Box>
   )

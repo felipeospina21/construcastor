@@ -1,10 +1,10 @@
 import React from "react"
 import { Box, Heading, Center } from "@chakra-ui/react"
 import SEO from "../components/seo"
-import HowItWorks from "../components/HowItWorks"
-import About from "../components/About"
+import HowItWorks from "../features/home/HowItWorks"
+import About from "../features/home/About"
 import ImgCarousel from "../components/ImgCarousel"
-import GoogleMap from "../components/GoogleMap"
+import GoogleMap from "../features/home/GoogleMap"
 import Hero from "../components/Hero"
 import { useBreakpoint } from "gatsby-plugin-breakpoints"
 
@@ -41,7 +41,7 @@ const IndexPage = () => {
             Nuestros Aliados
           </Heading>
         </Center>
-        <Hero src="Frame 1.jpg" alt="Logos marcas aliadas" />
+        <Hero src="Frame 1.jpg" alt="Logos marcas aliadas" m="2.5rem auto" />
       </Box>
       <HowItWorks />
       <GoogleMap />

@@ -10,6 +10,10 @@ module.exports = {
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-breakpoints",
+    'gatsby-plugin-netlify-cms',
+    'gatsby-plugin-image',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -43,6 +47,20 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/content/brands`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog-images`,
+        path: `${__dirname}/static/img`,
+      },
+    },
+    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
@@ -50,8 +68,6 @@ module.exports = {
         },
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
