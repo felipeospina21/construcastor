@@ -9,7 +9,7 @@ collections:
   - label: "Marcas"
     name: "brands"
     folder: "content/brands"
-    slug: "{{fields.title}}-{{slug}}"
+    slug: "{{fields.title}}"
     create: true
     widget: "object"
     summary: "{{fields.title}}"
@@ -32,5 +32,6 @@ collections:
       - label: "Fotos"
         name: "gallery"
         widget: "list"
+        required: false
         summary: "{{fields.image}}"
         field: { label: Image, name: image, widget: image }

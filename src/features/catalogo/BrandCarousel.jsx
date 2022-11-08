@@ -5,28 +5,35 @@ import FetchedImage from "../../components/FetchedImage"
 
 export default function BrandCarousel({ gallery }) {
   return (
-    <Box w="100%" maxW="1750px" margin="2rem auto">
+    <Box
+      w={["100%", "80%", "50%"]}
+      maxW="1750px"
+      margin={["2rem auto", "4rem auto 1rem auto"]}
+      backgroundColor='gray.800'
+    >
       <Carousel
         autoPlay={true}
         swipeable={true}
         infiniteLoop={true}
-        showArrows={true}
-        showStatus={false}
         centerMode={false}
-        interval={5000}
+        showArrows={true}
+        showIndicators={false}
+        showThumbs={false}
+        stopOnHover
+        interval={3000}
       >
         {gallery.map((image, index) => {
           return (
             <Box
               key={index}
-              h={["300px", "400px", "500px", "650px"]}
-              w={["100%", '80%', '50%']}
+              w={["100%", "80%", "50%"]}
               overflow="hidden"
-              mx='auto'
+              mx="auto"
             >
               <FetchedImage
                 src={image}
                 alt="imagen"
+                objectFit='contain'
                 gatsbyImageData="gatsbyImageData(placeholder: DOMINANT_COLOR, height:500)"
               />
             </Box>
