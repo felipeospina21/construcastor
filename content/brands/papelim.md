@@ -1,6 +1,6 @@
 ---
 title: PAPELIM
-brandLogo: /img/logo-papelim-2.jpg
+brandLogo: /img/logo-papelim.jpg
 templateKey: brands
 categories:
   - FIELTROS

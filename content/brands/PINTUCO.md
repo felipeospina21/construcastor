@@ -1,6 +1,4 @@
 ---
-gallery:
-  - /img/s2.jpg
 templateKey: brands
 title: PINTUCO
 brandLogo: /img/logo_pintuco.png

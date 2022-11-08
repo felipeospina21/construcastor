@@ -11,7 +11,8 @@ export default function BrandDetail({ data }) {
       <Box
         maxW="1750px"
         w={["100%"]}
-        h="150px"
+        h="200px"
+        mt='1rem'
         overflow="hidden"
         display="flex"
         justifyContent="center"
@@ -28,7 +29,7 @@ export default function BrandDetail({ data }) {
         </Heading>
       </Center>
       <BrandCategories categories={categories} />
-      {gallery?.length ? <BrandCarousel gallery={gallery} /> : null}
+      {gallery?.length ? <BrandCarousel gallery={gallery} /> : <Box h={['100px',null, '200px','500px']}/>}
     </Box>
   )
 }
