@@ -19,9 +19,16 @@ const { brand } = Astro.props;
 const { title, brandLogo, categories, gallery } = brand.data;
 
 const gallerySlides = (gallery ?? []).map((src) => ({ src, alt: "imagen" }));
+
+// Per-brand SEO description built from name + categories (unique per page).
+const catList = (categories ?? []).map((c) => c.toLowerCase());
+const description =
+  catList.length > 0
+    ? `${title} en Construcastor: ${catList.slice(0, 5).join(", ")}. Materiales de construcción en Medellín.`
+    : `${title}, uno de nuestros aliados en Construcastor. Materiales de construcción en Medellín.`;
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
   <div class="flex flex-col justify-center">
     <!-- Logo -->
     <div class="mt-4 flex h-[200px] w-full max-w-carousel justify-center overflow-hidden">
