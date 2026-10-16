@@ -1,6 +1,6 @@
 ---
 title: SILPLAS
-brandLogo: /img/images.png
+brandLogo: /img/logo-silplas.png
 templateKey: brands
 categories:
   - REJILLAS EN PVC
