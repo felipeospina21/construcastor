@@ -1,10 +1,7 @@
 ---
-title: CILES
+title: OIT
 brandLogo: /img/logo-ciles.png
 templateKey: brands
 categories:
-  - TOMAS		
-  - SWICHES
-  - TABLEROS		
-  - BREAKES
+  - x
 ---
