@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import LocalBusinessJsonLd from "../components/LocalBusinessJsonLd.astro";
 
 interface Props {
   title: string;
@@ -15,6 +16,10 @@ const author = "@felipeospina21";
 const { title, description = siteDescription } = Astro.props;
 const fullTitle = `${title} | ${siteTitle}`;
 const GTAG_ID = "G-J47DBKB66Z";
+
+// Canonical + absolute OG image URL derived from the configured site.
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL("/images/logo-castor.png", Astro.site).href;
 ---
 
 <!doctype html>
@@ -27,20 +32,26 @@ const GTAG_ID = "G-J47DBKB66Z";
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="og:locale" content="es_CO" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content={author} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
-    <!-- Web manifest / theme -->
-    <meta name="theme-color" content="#663399" />
+    <!-- Theme (matches brand yellow header) -->
+    <meta name="theme-color" content="#ffdd11" />
 
     <!-- Google Analytics (gtag) -->
     <script
@@ -55,10 +66,20 @@ const GTAG_ID = "G-J47DBKB66Z";
       gtag("js", new Date());
       gtag("config", GTAG_ID, { anonymize_ip: true });
     </script>
+
+    <!-- Structured data -->
+    <LocalBusinessJsonLd />
+    <slot name="head" />
   </head>
   <body>
+    <a
+      href="#main"
+      class="sr-only z-50 rounded bg-brand-blue px-4 py-2 text-white focus:not-sr-only focus:absolute focus:left-2 focus:top-2"
+    >
+      Saltar al contenido
+    </a>
     <Header />
-    <main class="mx-2 max-w-site xl:mx-auto">
+    <main id="main" class="mx-2 max-w-site xl:mx-auto">
       <slot />
     </main>
     <Footer />

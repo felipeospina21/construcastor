@@ -48,6 +48,16 @@ Brand pages are generated from `src/content/brands/*.md`. Each file's frontmatte
 the detail page at `/catalogo/<filename>`. Edit via the Netlify CMS at `/admin` or directly
 in markdown.
 
+> **TODO:** `silplas.md` uses a placeholder logo (`/img/images.png`). Replace it with the real
+> SILPLAS logo — drop the file in `public/img/` and update `brandLogo` in `src/content/brands/silplas.md`.
+
+## SEO
+
+- `astro.config.mjs` sets `site: https://construcastor.com` (update if the domain changes).
+- A sitemap is generated at `/sitemap-index.xml` via `@astrojs/sitemap`.
+- `public/robots.txt` allows crawling and points to the sitemap (disallows `/admin/`).
+- Each page emits a canonical URL, Open Graph tags (incl. `og:image`), and a unique description.
+
 ## Brand theme
 
 Colors are preserved from the original design in `tailwind.config.mjs`:

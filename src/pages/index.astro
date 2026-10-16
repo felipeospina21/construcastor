@@ -4,40 +4,58 @@ import Carousel from "../components/Carousel.astro";
 import About from "../components/About.astro";
 import HowItWorks from "../components/HowItWorks.astro";
 import GoogleMap from "../components/GoogleMap.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 import { getCollection } from "astro:content";
+
+// Static home images imported as modules → optimized (WebP + srcset) at build.
+import s1 from "../assets/home/s1.jpg";
+import s2 from "../assets/home/s2.jpg";
+import s3 from "../assets/home/s3.jpg";
+import s4 from "../assets/home/s4.jpg";
+import s5 from "../assets/home/s5.jpg";
+import s6 from "../assets/home/s6.jpg";
+import v1 from "../assets/home/v1.jpg";
+import v2 from "../assets/home/v2.jpg";
+import v3 from "../assets/home/v3.jpg";
+import v4 from "../assets/home/v4.jpg";
+import v5 from "../assets/home/v5.jpg";
+import v6 from "../assets/home/v6.jpg";
 
 // "Nuestros Aliados" grid is driven by the same brand collection as the
 // catalog — add a brand markdown file and it appears here automatically.
 const aliados = (await getCollection("brands")).sort((a, b) =>
-  a.data.title.localeCompare(b.data.title)
+  a.data.title.localeCompare(b.data.title, "es")
 );
 
+// Decorative hero slides: empty alt (no informational content).
 const desktopSlides = [
-  { src: "/images/s1.jpg", alt: "foto" },
-  { src: "/images/s2.jpg", alt: "foto" },
-  { src: "/images/s3.jpg", alt: "foto" },
-  { src: "/images/s4.jpg", alt: "foto" },
-  { src: "/images/s5.jpg", alt: "foto" },
-  { src: "/images/s6.jpg", alt: "foto" },
+  { src: s1, alt: "" },
+  { src: s2, alt: "" },
+  { src: s3, alt: "" },
+  { src: s4, alt: "" },
+  { src: s5, alt: "" },
+  { src: s6, alt: "" },
 ];
 const mobileSlides = [
-  { src: "/images/v1.jpg", alt: "foto" },
-  { src: "/images/v2.jpg", alt: "foto" },
-  { src: "/images/v3.jpg", alt: "foto" },
-  { src: "/images/v4.jpg", alt: "foto" },
-  { src: "/images/v5.jpg", alt: "foto" },
-  { src: "/images/v6.jpg", alt: "foto" },
+  { src: v1, alt: "" },
+  { src: v2, alt: "" },
+  { src: v3, alt: "" },
+  { src: v4, alt: "" },
+  { src: v5, alt: "" },
+  { src: v6, alt: "" },
 ];
 ---
 
 <Layout title="Inicio">
+  <h1 class="sr-only">Construcastor — Almacén de materiales para construcción</h1>
+
   <!-- Responsive carousel: mobile set below sm, desktop set from sm up -->
   <div class="mx-auto w-full max-w-carousel">
     <div class="block sm:hidden">
-      <Carousel slides={mobileSlides} interval={5000} />
+      <Carousel slides={mobileSlides} interval={5000} label="Imágenes de la tienda" />
     </div>
     <div class="hidden sm:block">
-      <Carousel slides={desktopSlides} interval={5000} />
+      <Carousel slides={desktopSlides} interval={5000} label="Imágenes de la tienda" />
     </div>
   </div>
 
@@ -45,9 +63,7 @@ const mobileSlides = [
 
   <!-- Nuestros Aliados -->
   <section class="mx-auto my-8 w-full max-w-[1100px] px-2 sm:my-16">
-    <div class="flex justify-center">
-      <h1 class="text-3xl font-bold">Nuestros Aliados</h1>
-    </div>
+    <SectionHeading>Nuestros Aliados</SectionHeading>
 
     <ul
       class="mx-auto my-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
@@ -64,6 +80,8 @@ const mobileSlides = [
                 src={brand.data.brandLogo}
                 alt={`Logo ${brand.data.title}`}
                 class="max-h-full max-w-full object-contain"
+                width="160"
+                height="80"
                 loading="lazy"
               />
             </a>

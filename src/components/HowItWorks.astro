@@ -9,6 +9,7 @@ import brickWall from "../assets/icons/brick-wall.svg?raw";
 import largePaintBrush from "../assets/icons/large-paint-brush.svg?raw";
 import abstract082 from "../assets/icons/abstract-082.svg?raw";
 import hammerNails from "../assets/icons/hammer-nails.svg?raw";
+import SectionHeading from "./SectionHeading.astro";
 
 const items = [
   { icon: straightPipe, text: "Tuberías y Accesorios de PVC" }, // GiStraightPipe
@@ -35,9 +36,7 @@ const items = [
 
 <section class="w-full pb-4">
   <div class="mx-2 flex max-w-[800px] flex-col items-center sm:mx-auto">
-    <div class="my-8 flex">
-      <h1 class="text-3xl font-bold">Líneas y Productos</h1>
-    </div>
+    <SectionHeading class="my-8">Líneas y Productos</SectionHeading>
 
     <div class="grid grid-cols-[0.2fr_2fr] gap-4 sm:grid-cols-[0.3fr_2fr]">
       {
