@@ -1,0 +1,64 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Carousel from "../../components/Carousel.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const brands = await getCollection("brands");
+  return brands.map((brand) => ({
+    params: { slug: brand.slug },
+    props: { brand },
+  }));
+}
+
+interface Props {
+  brand: CollectionEntry<"brands">;
+}
+
+const { brand } = Astro.props;
+const { title, brandLogo, categories, gallery } = brand.data;
+
+const gallerySlides = (gallery ?? []).map((src) => ({ src, alt: "imagen" }));
+---
+
+<Layout title={title}>
+  <div class="flex flex-col justify-center">
+    <!-- Logo -->
+    <div class="mt-4 flex h-[200px] w-full max-w-carousel justify-center overflow-hidden">
+      <img src={brandLogo} alt={`logo ${title}`} class="h-full object-contain" />
+    </div>
+
+    <!-- Title -->
+    <div class="mx-auto my-4 flex flex-col sm:my-8">
+      <h1 class="text-3xl font-bold">{title}</h1>
+    </div>
+
+    <!-- Categories -->
+    <div class="mx-auto flex flex-wrap items-center justify-start">
+      {
+        categories.map((cat) => (
+          <div class="m-[0.35rem_0.8rem] rounded-lg bg-black/5 px-2 py-[0.1rem] shadow-[2px_2px_5px_rgba(143,149,178,0.5)]">
+            <p class="text-xs capitalize">{cat}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Gallery carousel -->
+    {
+      gallerySlides.length ? (
+        <div class="mx-auto my-8 w-full max-w-carousel bg-gray-800 sm:my-10 sm:w-4/5 md:w-1/2">
+          <Carousel
+            slides={gallerySlides}
+            interval={3000}
+            showArrows={true}
+            slideClass="h-[500px] w-full"
+            imgClass="h-full w-full object-contain"
+          />
+        </div>
+      ) : (
+        <div class="h-[100px] md:h-[200px] lg:h-[500px]" />
+      )
+    }
+  </div>
+</Layout>

@@ -1,0 +1,138 @@
+---
+// Lightweight carousel replacing react-responsive-carousel.
+// Autoplay + infinite loop + swipe, zero framework runtime.
+interface Slide {
+  src: string;
+  alt: string;
+}
+interface Props {
+  slides: Slide[];
+  interval?: number;
+  showArrows?: boolean;
+  slideClass?: string; // classes applied to each slide wrapper (e.g. heights)
+  imgClass?: string; // classes applied to each <img>
+}
+
+const {
+  slides,
+  interval = 5000,
+  showArrows = false,
+  slideClass = "h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px] w-full",
+  imgClass = "h-full w-full object-cover",
+} = Astro.props;
+
+const uid = "car-" + Math.random().toString(36).slice(2, 9);
+---
+
+<div
+  class="carousel relative w-full overflow-hidden"
+  data-carousel
+  data-interval={interval}
+  id={uid}
+>
+  <div class="carousel-track flex transition-transform duration-500 ease-in-out" data-track>
+    {
+      slides.map((slide) => (
+        <div class={`carousel-slide shrink-0 grow-0 basis-full ${slideClass}`}>
+          <img src={slide.src} alt={slide.alt} class={imgClass} loading="lazy" />
+        </div>
+      ))
+    }
+  </div>
+
+  {
+    showArrows && slides.length > 1 && (
+      <>
+        <button
+          type="button"
+          data-prev
+          aria-label="Anterior"
+          class="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white hover:bg-black/60"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button
+          type="button"
+          data-next
+          aria-label="Siguiente"
+          class="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white hover:bg-black/60"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </>
+    )
+  }
+</div>
+
+<script>
+  function initCarousel(root: HTMLElement) {
+    const track = root.querySelector<HTMLElement>("[data-track]");
+    if (!track) return;
+    const slides = Array.from(track.children) as HTMLElement[];
+    const total = slides.length;
+    if (total <= 1) return;
+
+    const interval = Number(root.dataset.interval) || 5000;
+    let index = 0;
+    let timer: number | undefined;
+
+    const render = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    };
+    const go = (next: number) => {
+      index = (next + total) % total; // infinite loop
+      render();
+    };
+    const next = () => go(index + 1);
+    const prev = () => go(index - 1);
+
+    const start = () => {
+      stop();
+      timer = window.setInterval(next, interval);
+    };
+    const stop = () => {
+      if (timer) window.clearInterval(timer);
+    };
+
+    root.querySelector("[data-next]")?.addEventListener("click", () => {
+      next();
+      start();
+    });
+    root.querySelector("[data-prev]")?.addEventListener("click", () => {
+      prev();
+      start();
+    });
+
+    // Pause on hover
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+
+    // Swipe
+    let startX = 0;
+    root.addEventListener(
+      "touchstart",
+      (e) => {
+        startX = e.touches[0].clientX;
+      },
+      { passive: true }
+    );
+    root.addEventListener(
+      "touchend",
+      (e) => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) {
+          dx < 0 ? next() : prev();
+          start();
+        }
+      },
+      { passive: true }
+    );
+
+    render();
+    start();
+  }
+
+  document
+    .querySelectorAll<HTMLElement>("[data-carousel]")
+    .forEach((el) => initCarousel(el));
+</script>

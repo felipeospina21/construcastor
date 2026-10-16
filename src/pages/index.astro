@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Carousel from "../components/Carousel.astro";
+import About from "../components/About.astro";
+import HowItWorks from "../components/HowItWorks.astro";
+import GoogleMap from "../components/GoogleMap.astro";
+
+const desktopSlides = [
+  { src: "/images/s1.jpg", alt: "foto" },
+  { src: "/images/s2.jpg", alt: "foto" },
+  { src: "/images/s3.jpg", alt: "foto" },
+  { src: "/images/s4.jpg", alt: "foto" },
+  { src: "/images/s5.jpg", alt: "foto" },
+  { src: "/images/s6.jpg", alt: "foto" },
+];
+const mobileSlides = [
+  { src: "/images/v1.jpg", alt: "foto" },
+  { src: "/images/v2.jpg", alt: "foto" },
+  { src: "/images/v3.jpg", alt: "foto" },
+  { src: "/images/v4.jpg", alt: "foto" },
+  { src: "/images/v5.jpg", alt: "foto" },
+  { src: "/images/v6.jpg", alt: "foto" },
+];
+---
+
+<Layout title="Inicio">
+  <!-- Responsive carousel: mobile set below sm, desktop set from sm up -->
+  <div class="mx-auto w-full max-w-carousel">
+    <div class="block sm:hidden">
+      <Carousel slides={mobileSlides} interval={5000} />
+    </div>
+    <div class="hidden sm:block">
+      <Carousel slides={desktopSlides} interval={5000} />
+    </div>
+  </div>
+
+  <About />
+
+  <!-- Nuestros Aliados -->
+  <section class="mx-auto my-8 w-full max-w-[800px] sm:my-16">
+    <div class="flex justify-center">
+      <h1 class="text-3xl font-bold">Nuestros Aliados</h1>
+    </div>
+    <img
+      src="/images/Frame 1.jpg"
+      alt="Logos marcas aliadas"
+      class="mx-auto my-10 w-full"
+      loading="lazy"
+    />
+  </section>
+
+  <HowItWorks />
+  <GoogleMap />
+</Layout>

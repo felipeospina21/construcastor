@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const brands = (await getCollection("brands")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
+---
+
+<Layout title="Catálogo">
+  <!-- Hero -->
+  <div class="max-h-[400px] overflow-hidden">
+    <img
+      src="/images/s2.jpg"
+      alt="imagen de portada"
+      class="w-full object-cover"
+    />
+  </div>
+
+  <h1 class="my-4 text-center text-3xl font-bold">Catálogo</h1>
+  <p class="text-center">Conoce nuestros principales aliados</p>
+
+  <div class="mx-auto my-4 flex max-w-[50%] flex-col items-start">
+    {
+      brands.map((brand) => (
+        <a
+          href={`/catalogo/${brand.slug}`}
+          class="text-brand-blue hover:underline"
+        >
+          {brand.data.title}
+        </a>
+      ))
+    }
+  </div>
+</Layout>

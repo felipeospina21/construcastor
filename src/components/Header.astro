@@ -1,0 +1,42 @@
+---
+// Sticky header — ports Header.js + HeaderLogo.js + FixedNav.js
+const navLinks = [
+  { to: "/", label: "Inicio" },
+  { to: "/catalogo", label: "Catálogo" },
+];
+---
+
+<header
+  class="sticky top-0 z-30 mx-auto h-28 max-w-carousel overflow-hidden bg-brand-yellow"
+>
+  <div class="mx-auto flex h-full max-w-carousel items-center">
+    <!-- Logo -->
+    <a href="/" class="focus:bg-transparent">
+      <img
+        src="/images/logo-castor.svg"
+        alt="Construcastor logo"
+        class="ml-2 mt-2 h-[65px] w-[65px] rounded-full sm:h-[85px] sm:w-[85px]"
+        width="85"
+        height="85"
+      />
+    </a>
+
+    <!-- Nav -->
+    <nav class="flex w-full flex-col items-center">
+      <h1 class="text-3xl font-bold text-brand-blue">CONSTRUCASTOR</h1>
+      <h2 class="text-xs font-bold text-brand-blue">Su mejor proveedor</h2>
+      <div class="m-[1rem_0_0.3rem_0] flex w-full justify-start sm:w-1/2 sm:justify-center">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.to}
+              class="mx-4 font-semibold text-brand-blue underline"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+  </div>
+</header>
