@@ -1,0 +1,13 @@
+# Netlify configuration for the Astro build.
+# Astro outputs the built site to `dist/` (NOT `public/`, which is now source).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Current Node LTS (24.x "Krypton"). Keep in sync with .nvmrc.
+  NODE_VERSION = "24"
+
+# Netlify CMS lives at /admin (static). Nothing special needed, but keep it
+# excluded from indexing via robots.txt (already configured in public/robots.txt).
