@@ -1,0 +1,52 @@
+---
+// LocalBusiness structured data (JSON-LD).
+// Values mirror the footer: address, phones, hours, email, WhatsApp.
+const site = Astro.site?.href.replace(/\/$/, "") ?? "https://construcastor.com";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HardwareStore",
+  "@id": `${site}/#business`,
+  name: "Construcastor",
+  description: "Almacén de materiales para construcción",
+  url: `${site}/`,
+  logo: `${site}/images/logo-castor.png`,
+  image: `${site}/images/logo-castor.png`,
+  telephone: "+57-4-512-93-28",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Calle 48 (Pichincha) #55-59",
+    addressLocality: "Medellín",
+    addressCountry: "CO",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 6.249667,
+    longitude: -75.574404,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "08:00",
+      closes: "13:30",
+    },
+  ],
+  sameAs: [
+    "https://api.whatsapp.com/send?phone=573218589931",
+    "mailto:elcastor@une.net.co",
+  ],
+};
+---
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(jsonLd)}
+/>

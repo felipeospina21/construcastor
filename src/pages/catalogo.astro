@@ -1,0 +1,224 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import heroImg from "../assets/home/s2.jpg";
+
+const brands = (await getCollection("brands")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title, "es")
+);
+
+// Normalize for accent/case-insensitive search ("tuberia" matches "TUBERÍA").
+const normalize = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+// ItemList structured data for the brand directory.
+const site = Astro.site?.href.replace(/\/$/, "") ?? "https://construcastor.com";
+const itemListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Marcas aliadas de Construcastor",
+  itemListElement: brands.map((brand, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: brand.data.title,
+    url: `${site}/catalogo/${brand.slug}`,
+  })),
+};
+---
+
+<Layout title="Catálogo">
+  <script
+    slot="head"
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(itemListJsonLd)}
+  />
+  <!-- Hero -->
+  <div class="aspect-[21/9] max-h-[400px] w-full overflow-hidden">
+    <Image
+      src={heroImg}
+      alt="Materiales de construcción Construcastor"
+      class="h-full w-full object-cover"
+      widths={[640, 960, 1280, 1750]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <h1 class="my-4 text-center text-3xl font-bold">Catálogo</h1>
+  <p class="text-center">Conoce nuestros principales aliados</p>
+
+  <!-- Search / filter -->
+  <div class="mx-auto my-6 max-w-xl px-4">
+    <label for="brand-search" class="sr-only">Buscar marca o categoría</label>
+    <div class="relative">
+      <span
+        class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400"
+        aria-hidden="true"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </span>
+      <input
+        id="brand-search"
+        type="search"
+        placeholder="Buscar marca o categoría…"
+        autocomplete="off"
+        class="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-3 text-base outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue"
+      />
+    </div>
+  </div>
+
+  <!-- A-Z jump / filter bar -->
+  <nav
+    id="brand-alpha"
+    aria-label="Filtrar por letra"
+    class="mx-auto mb-4 flex max-w-[1100px] flex-wrap justify-center gap-1 px-4"
+  >
+    {
+      (() => {
+        const present = new Set(
+          brands.map((b) => b.data.title.charAt(0).toUpperCase())
+        );
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        return (
+          <>
+            <button
+              type="button"
+              data-letter=""
+              class="alpha-btn rounded px-2 py-1 text-sm font-semibold text-brand-blue aria-[current=true]:bg-brand-blue aria-[current=true]:text-white"
+              aria-current="true"
+            >
+              Todas
+            </button>
+            {letters.map((l) =>
+              present.has(l) ? (
+                <button
+                  type="button"
+                  data-letter={l}
+                  class="alpha-btn rounded px-2 py-1 text-sm font-semibold text-brand-blue hover:bg-black/5 aria-[current=true]:bg-brand-blue aria-[current=true]:text-white"
+                >
+                  {l}
+                </button>
+              ) : (
+                <span class="px-2 py-1 text-sm text-gray-300" aria-hidden="true">
+                  {l}
+                </span>
+              )
+            )}
+          </>
+        );
+      })()
+    }
+  </nav>
+
+  <!-- Brand grid -->
+  <ul
+    id="brand-grid"
+    class="mx-auto my-4 grid max-w-[1100px] grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4"
+  >
+    {
+      brands.map((brand) => {
+        const cats = brand.data.categories ?? [];
+        const haystack = normalize([brand.data.title, ...cats].join(" "));
+        return (
+          <li class="brand-card" data-search={haystack} data-letter={brand.data.title.charAt(0).toUpperCase()}>
+            <a
+              href={`/catalogo/${brand.slug}`}
+              class="flex h-full flex-col items-center gap-2 rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md"
+            >
+              <div class="flex h-20 w-full items-center justify-center">
+                <img
+                  src={brand.data.brandLogo}
+                  alt={`Logo ${brand.data.title}`}
+                  class="max-h-full max-w-full object-contain"
+                  width="160"
+                  height="80"
+                  loading="lazy"
+                />
+              </div>
+              <span class="text-center font-semibold text-brand-blue">
+                {brand.data.title}
+              </span>
+              {cats.length > 0 && (
+                <div class="flex flex-wrap justify-center gap-1">
+                  {cats.slice(0, 3).map((cat) => (
+                    <span class="rounded bg-black/5 px-2 py-[0.1rem] text-[0.65rem] capitalize text-gray-600">
+                      {cat.toLowerCase()}
+                    </span>
+                  ))}
+                  {cats.length > 3 && (
+                    <span class="px-1 text-[0.65rem] text-gray-400">
+                      +{cats.length - 3}
+                    </span>
+                  )}
+                </div>
+              )}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <!-- No results -->
+  <p id="brand-empty" class="my-8 hidden text-center text-gray-500">
+    No se encontraron marcas para <span id="brand-query" class="font-semibold"></span>.
+  </p>
+</Layout>
+
+<script>
+  const normalize = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+  const input = document.getElementById("brand-search") as HTMLInputElement | null;
+  const cards = Array.from(
+    document.querySelectorAll<HTMLElement>("#brand-grid .brand-card")
+  );
+  const empty = document.getElementById("brand-empty");
+  const queryEl = document.getElementById("brand-query");
+  const alphaBtns = Array.from(
+    document.querySelectorAll<HTMLButtonElement>("#brand-alpha .alpha-btn")
+  );
+
+  let activeLetter = ""; // "" = all
+
+  function applyFilter() {
+    const q = input ? normalize(input.value.trim()) : "";
+    let visible = 0;
+    for (const card of cards) {
+      const matchText = q === "" || (card.dataset.search ?? "").includes(q);
+      const matchLetter =
+        activeLetter === "" || card.dataset.letter === activeLetter;
+      const show = matchText && matchLetter;
+      card.classList.toggle("hidden", !show);
+      if (show) visible++;
+    }
+    if (empty) empty.classList.toggle("hidden", visible !== 0);
+    if (queryEl) {
+      const parts = [];
+      if (input && input.value.trim()) parts.push(`"${input.value.trim()}"`);
+      if (activeLetter) parts.push(`la letra ${activeLetter}`);
+      queryEl.textContent = parts.join(" / ");
+    }
+  }
+
+  input?.addEventListener("input", applyFilter);
+
+  for (const btn of alphaBtns) {
+    btn.addEventListener("click", () => {
+      activeLetter = btn.dataset.letter ?? "";
+      for (const b of alphaBtns) {
+        b.setAttribute("aria-current", b === btn ? "true" : "false");
+      }
+      applyFilter();
+    });
+  }
+</script>
