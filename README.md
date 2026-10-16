@@ -9,7 +9,6 @@ Almacén de materiales para construcción. Static marketing site built with **As
 - [Astro](https://astro.build) — static site generator (zero JS by default)
 - [Tailwind CSS](https://tailwindcss.com) — styling
 - Markdown content collections for brand pages
-- Netlify CMS (`/admin`) for editing brand content
 
 ## Commands
 
@@ -26,7 +25,6 @@ Almacén de materiales para construcción. Static marketing site built with **As
 public/
   img/            Brand logos & gallery images (referenced as /img/... in markdown)
   images/         Home carousel/hero images + favicon + logo SVG
-  admin/          Netlify CMS (config.yml + index.html)
 src/
   content/
     brands/       One markdown file per brand (frontmatter: title, brandLogo, categories, gallery)
@@ -45,14 +43,14 @@ src/
 ## Content
 
 Brand pages are generated from `src/content/brands/*.md`. Each file's frontmatter drives
-the detail page at `/catalogo/<filename>`. Edit via the Netlify CMS at `/admin` or directly
-in markdown.
+the detail page at `/catalogo/<filename>`. Edit the markdown files directly to add,
+update, or remove a brand.
 
 ## SEO
 
 - `astro.config.mjs` sets `site: https://construcastor.com` (update if the domain changes).
 - A sitemap is generated at `/sitemap-index.xml` via `@astrojs/sitemap`.
-- `public/robots.txt` allows crawling and points to the sitemap (disallows `/admin/`).
+- `public/robots.txt` allows crawling and points to the sitemap.
 - Each page emits a canonical URL, Open Graph tags (incl. `og:image`), and a unique description.
 
 ## Brand theme
