@@ -48,7 +48,7 @@ update, or remove a brand.
 
 ## SEO
 
-- `astro.config.mjs` sets `site: https://construcastor.com` (update if the domain changes).
+- `astro.config.mjs` sets `site: https://www.construcastor.com` (update if the domain changes).
 - A sitemap is generated at `/sitemap-index.xml` via `@astrojs/sitemap`.
 - `public/robots.txt` allows crawling and points to the sitemap.
 - Each page emits a canonical URL, Open Graph tags (incl. `og:image`), and a unique description.

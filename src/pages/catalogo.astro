@@ -16,7 +16,7 @@ const normalize = (s: string) =>
     .replace(/[\u0300-\u036f]/g, "");
 
 // ItemList structured data for the brand directory.
-const site = Astro.site?.href.replace(/\/$/, "") ?? "https://construcastor.com";
+const site = Astro.site?.href.replace(/\/$/, "") ?? "https://www.construcastor.com";
 const itemListJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",

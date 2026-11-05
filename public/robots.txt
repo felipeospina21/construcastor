@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://construcastor.com/sitemap-index.xml
+Sitemap: https://www.construcastor.com/sitemap-index.xml
